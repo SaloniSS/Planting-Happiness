@@ -9,11 +9,15 @@ dotenv.config({ path: './config/config.env' });
 
 connectDB();
 
+const users = require('./routes/user_router');
+
 const app = express();
 
-app.get('/', (req, res) => res.send('Hello'));
+app.use('/users', users);
 
-const PORT = process.env.PORT || 8000;
+app.get('/', (req, res) => res.send('GET users'));
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(
     PORT, 
