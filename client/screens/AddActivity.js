@@ -1,23 +1,21 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Container, Body, Content, Header, Title, Text } from "native-base";
 
-const AddActivity = () => {
+const AddActivity = (props) => {
+  //const { navigate } = props.navigation;
+
   return (
-    <View style={styles.background}>
-      <View>
-        <Text>Activity</Text>
-      </View>
-    </View>
+    <Container>
+      <Header>
+        <Body>
+          <Title>Add Activity</Title>
+        </Body>
+      </Header>
+      <Content padder>
+        <Text>ok got dis far omg</Text>
+      </Content>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#B5EAD7",
-  },
-});
 
 export default AddActivity;
