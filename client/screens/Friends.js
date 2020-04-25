@@ -15,6 +15,7 @@ import {
   Segment,
   Left,
 } from "native-base";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Friends = (props) => {
   const [view, setView] = useState(0);
@@ -127,15 +128,20 @@ const Friends = (props) => {
           <Icon name="people" />
         </Right>
       </Header>
-      <Segment>
-        <Button first active={view === 0} onPress={() => setView(0)}>
-          <Text>Followers</Text>
-        </Button>
-        <Button last active={view === 1} onPress={() => setView(1)}>
-          <Text>Following</Text>
-        </Button>
-      </Segment>
-      <Content padder>{renderComponent()}</Content>
+      <LinearGradient
+        colors={["#B5EAD7", "#fff", "#fff", "#B5EAD7"]}
+        style={{ flex: 1 }}
+      >
+        <Segment style={{ backgroundColor: "transparent" }}>
+          <Button first active={view === 0} onPress={() => setView(0)}>
+            <Text>Followers</Text>
+          </Button>
+          <Button last active={view === 1} onPress={() => setView(1)}>
+            <Text>Following</Text>
+          </Button>
+        </Segment>
+        <Content padder>{renderComponent()}</Content>
+      </LinearGradient>
     </Container>
   );
 };

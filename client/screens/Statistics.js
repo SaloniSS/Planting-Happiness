@@ -11,6 +11,7 @@ import {
   Text,
   Left,
 } from "native-base";
+import { LinearGradient } from "expo-linear-gradient";
 
 const Statistics = (props) => {
   return (
@@ -28,9 +29,14 @@ const Statistics = (props) => {
           <Icon name="md-stats" />
         </Right>
       </Header>
-      <Content padder>
-        <Text>content</Text>
-      </Content>
+      <LinearGradient
+        colors={["#B5EAD7", "#fff", "#fff", "#B5EAD7"]}
+        style={{ flex: 1 }}
+      >
+        <Content padder>
+          <Text>content</Text>
+        </Content>
+      </LinearGradient>
     </Container>
   );
 };
