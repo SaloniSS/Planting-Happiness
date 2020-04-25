@@ -23,19 +23,21 @@ const ProfileScreen = (props) => {
       </Header>
       <Content>
         <Form>
-          <Item floatingLabel>
+          <Item floatingLabel last>
             <Label>Username</Label>
             <Input />
           </Item>
-          <Item floatingLabel last>
-            <Label>Password</Label>
-            <Input />
-          </Item>
         </Form>
-        <Button onPress={() => props.navigation.navigate("Feed")}>
+        <Button
+          onPress={() => props.navigation.navigate("Feed")}
+          style={{ alignSelf: "flex-start" }}
+        >
           <Text>Continue</Text>
         </Button>
-        <Button onPress={() => props.navigation.navigate("Login")}>
+        <Button
+          onPress={() => props.navigation.navigate("Login")}
+          style={{ alignSelf: "flex-start" }}
+        >
           <Text>Sign Out</Text>
         </Button>
       </Content>
