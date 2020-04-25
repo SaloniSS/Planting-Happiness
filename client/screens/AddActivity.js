@@ -90,6 +90,9 @@ const AddActivity = (props) => {
                 onChange={textChangeHandler}
               />
             </Form>
+            <Button>
+              <Text>Post!</Text>
+            </Button>
           </Card>
         </Content>
       </LinearGradient>
