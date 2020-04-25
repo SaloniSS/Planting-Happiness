@@ -20,7 +20,7 @@ exports.getUser = async (req, res, next) => {
 
 exports.addUser = async (req, res, next) => {
     try {
-        const { userName, profilePic, points, goal, activity_log } = req.body;
+        const { userName, friends, profilePic, points, goal, activity_log } = req.body;
 
         const user = await User.create(req.body);
 
@@ -80,7 +80,7 @@ exports.deleteUser = async (req, res, next) => {
 exports.updateUser = async (req, res, next) => {
     try {
 
-        const { userName, profilePic, points, goal, activity_log } = req.body;
+        const { userName, friends, profilePic, points, goal, activity_log } = req.body;
 
         const user = await User.findById(req.params.id);
 
@@ -92,6 +92,7 @@ exports.updateUser = async (req, res, next) => {
         }
 
         user.userName = req.body.userName;
+        user.friends = req.body.friends;
         user.profilePic = req.body.profilePic;
         user.points = req.body.points;
         user.goal = req.body.goal;
