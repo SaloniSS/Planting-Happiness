@@ -1,4 +1,4 @@
-// source code from https://github.com/2joocy/react-native-circular-slider
+// source code from https://github.com/2joocy/react-native-circular-slider but modified for some fixes
 
 import React, { Component } from "react";
 import { PanResponder, View, Dimensions } from "react-native";
@@ -107,22 +107,12 @@ export default class CircleSlider extends Component {
           />
           <Text
             x={width / 2}
-            y={width / 2 + 50}
-            fontSize={14}
-            fill={this.props.textColor}
-            textAnchor="middle"
-          >
-            {`Start Coord X: ${startCoord.x}, Y: ${startCoord.y}`}
-          </Text>
-          <Text
-            x={width / 2}
             y={width / 2}
             fontSize={this.props.textSize}
             fill={this.props.textColor}
             textAnchor="middle"
           >
-            {this.props.showValue &&
-              this.props.onValueChange(this.state.angle) + ""}
+            {this.props.showValue && this.state.angle}
           </Text>
           <Path
             stroke={"url(#gradient1)"}
