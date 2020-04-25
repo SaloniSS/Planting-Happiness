@@ -1,16 +1,14 @@
 import React from "react";
-import HomePage from "./HomePage.js";
-import TabBar from "../components/TabBar";
-import { DrawerNavigator } from "react-navigation";
 import { Text } from "native-base";
 
-const Feed = DrawerNavigator(
-  {
-    Home: { screen: HomePage },
-    Chat: { screen: TabBar },
-  },
-  {
-    contentComponent: (props) => <Text>hi</Text>,
-  }
-);
+const Feed = () => {
+  return (
+    <View style={styles.background}>
+      <View>
+        <Text>Feed</Text>
+      </View>
+    </View>
+  );
+};
+
 export default Feed;
