@@ -1,19 +1,20 @@
-import React from "react";
-import { Container, Body, Content, Header, Title, Text } from "native-base";
+import { createStackNavigator } from "react-navigation-stack";
 
-const Menu = () => {
-  return (
-    <Container>
-      <Header>
-        <Body>
-          <Title>Menu</Title>
-        </Body>
-      </Header>
-      <Content padder>
-        <Text>buttons</Text>
-      </Content>
-    </Container>
-  );
-};
+import Friends from "./Friends";
+import MenuList from "./MenuList";
+import Statistics from "./Statistics";
+import Profile from "./ProfileScreen";
+import Login from "./LoginScreen";
+import Redeem from "./Redeem";
 
-export default Menu;
+export default createStackNavigator(
+  {
+    MenuList,
+    Friends,
+    Statistics,
+    Profile,
+    Login,
+    Redeem,
+  },
+  { headerMode: "none", initialRouteName: "MenuList" }
+);
