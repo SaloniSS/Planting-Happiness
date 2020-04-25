@@ -5,40 +5,37 @@ import {
   Content,
   Header,
   Title,
+  Text,
   Button,
   Icon,
-  Right,
-  Text,
-  Left,
 } from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
 
-const AddActivity = (props) => {
+const ViewActivity = (props) => {
   return (
     <Container>
       <Header>
-        <Left>
-          <Button transparent onPress={() => props.navigation.goBack()}>
-            <Icon name="arrow-round-back" />
-          </Button>
-        </Left>
         <Body>
-          <Title>Add Activity</Title>
+          <Title>Menu</Title>
         </Body>
-        <Right>
-          <Icon name="md-stats" />
-        </Right>
       </Header>
       <LinearGradient
         colors={["#B5EAD7", "#fff", "#fff", "#B5EAD7"]}
         style={{ flex: 1 }}
       >
         <Content padder>
-          <Text>content</Text>
+          <Button
+            iconLeft
+            rounded
+            onPress={() => props.navigation.navigate("AddActivity")}
+          >
+            <Icon name="md-person" />
+            <Text>Add Activity</Text>
+          </Button>
         </Content>
       </LinearGradient>
     </Container>
   );
 };
 
-export default AddActivity;
+export default ViewActivity;
