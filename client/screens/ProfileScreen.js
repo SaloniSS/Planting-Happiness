@@ -13,6 +13,8 @@ import {
   Text,
 } from "native-base";
 
+import CircleSlider from "../components/CircleSlider";
+
 const ProfileScreen = (props) => {
   return (
     <Container>
@@ -26,6 +28,14 @@ const ProfileScreen = (props) => {
           <Item floatingLabel last>
             <Label>Username</Label>
             <Input />
+          </Item>
+          <Item>
+            <CircleSlider
+              //startGradient="#01fffc"
+              //endGradient="#a200ff"
+              value={100}
+              onValueChange={(value) => console.log(value)}
+            />
           </Item>
         </Form>
         <Button
