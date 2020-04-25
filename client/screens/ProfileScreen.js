@@ -20,6 +20,8 @@ import CircleSlider from "../components/CircleSlider";
 
 import gradientBkgd from "../assets/mainBkgd.png";
 
+GLOBAL = require('../global');
+
 var styles = {
   wrapper: {
     alignContent: "flex-start",
@@ -58,6 +60,7 @@ var styles = {
 const ProfileScreen = (props) => {
   // don't use content because it is a ScrollView
   const photoURL = props.navigation.getParam("photo_link");
+  console.log("Profile" + GLOBAL.id);
   return (
     <View style={styles.wrapper}>
       <Header>

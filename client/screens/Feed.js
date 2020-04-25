@@ -3,6 +3,8 @@ import { Container, Header, Content, Body, Title } from "native-base";
 import Post from "../components/Post";
 import { LinearGradient } from "expo-linear-gradient";
 
+GLOBAL = require('../global');
+
 const sampleData = [
   {
     user: {
@@ -36,6 +38,7 @@ const sampleData = [
 ];
 
 const Feed = () => {
+    console.log("Feed"+ GLOBAL.id);
   return (
     <Container>
       <Header>
