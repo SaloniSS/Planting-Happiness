@@ -12,6 +12,8 @@ const ANDROID_CLIENT_ID = ANDROID_ID;
 import gradientBkgd from "../assets/homeBkgd.png";
 import leaf from "../assets/leafBoi.png";
 
+GLOBAL = require('../global');
+
 var styles = {
     wrapper: {},
     slide1: {
@@ -96,6 +98,8 @@ const LoginScreen = (props) => {
 
       if (result.type === "success") {
         console.log("LoginScreen.js.js 21 | ", result.user.givenName);
+        GLOBAL.id = result.user.id;
+        console.log("Login"+ GLOBAL.id);
         props.navigation.navigate("Profile", {
           username: result.user.givenName,
           photo_link: result.user.photoUrl,

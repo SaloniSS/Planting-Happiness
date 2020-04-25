@@ -13,6 +13,8 @@ import { ImageBackground } from "react-native";
 import Post from "../components/Post";
 import gradientBkgd from "../assets/mainBkgd.png";
 
+GLOBAL = require('../global');
+
 const sampleData = [
     {
         user: {
@@ -54,6 +56,8 @@ var styles = {
 };
 
 const Feed = () => {
+    console.log("Feed"+ GLOBAL.id);
+
     return (
         <View>
             <Header>
