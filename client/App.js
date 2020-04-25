@@ -1,20 +1,15 @@
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+// Screens
+import LoginScreen from './screens/LoginScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
-import HomePage from './screens/HomePage';
+//React Navigation Setup
+import {  createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-const Stack = createStackNavigator();
+const MainNavigator = createSwitchNavigator({
+  Login: { screen: LoginScreen },
+  Profile: { screen: ProfileScreen },
+});
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomePage} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+const App = createAppContainer(MainNavigator);
 
 export default App;
