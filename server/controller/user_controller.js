@@ -18,6 +18,23 @@ exports.getUser = async (req, res, next) => {
     }
 }
 
+exports.getUserById = async (req, res, next) => {
+    
+    try {
+        const user = await User.find({}).where({ "_id": req.params.id});
+
+        return res.status(200).json({
+            success: true,
+            data: user
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+}
+
 exports.addUser = async (req, res, next) => {
     try {
         const { userName, friends, profilePic, points, goal, activity_log } = req.body;
