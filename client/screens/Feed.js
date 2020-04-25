@@ -1,9 +1,10 @@
 import React from "react";
 import { Text } from "native-base";
+import { View } from "react-native";
 
 const Feed = () => {
   return (
-    <View style={styles.background}>
+    <View>
       <View>
         <Text>Feed</Text>
       </View>

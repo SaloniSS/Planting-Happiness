@@ -10,6 +10,10 @@ export default class ProfileScreen extends Component {
           Welcome, {this.props.navigation.getParam("username")}
         </Text>
         <Button
+          title="Go to feed"
+          onPress={() => this.props.navigation.navigate("Feed")}
+        />
+        <Button
           title="Sign out"
           onPress={() => this.props.navigation.navigate("Login")}
         />
@@ -23,6 +27,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
-  }
+    justifyContent: "center",
+  },
 });
