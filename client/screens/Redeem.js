@@ -12,7 +12,7 @@ import {
   Left,
 } from "native-base";
 
-const Statistics = (props) => {
+const Redeem = (props) => {
   return (
     <Container>
       <Header>
@@ -22,10 +22,10 @@ const Statistics = (props) => {
           </Button>
         </Left>
         <Body>
-          <Title>Statistics</Title>
+          <Title>Redeem Points</Title>
         </Body>
         <Right>
-          <Icon name="md-stats" />
+          <Icon name="md-card" />
         </Right>
       </Header>
       <Content padder>
@@ -35,4 +35,4 @@ const Statistics = (props) => {
   );
 };
 
-export default Statistics;
+export default Redeem;

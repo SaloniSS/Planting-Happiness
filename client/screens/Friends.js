@@ -12,7 +12,7 @@ import {
   Left,
 } from "native-base";
 
-const Statistics = (props) => {
+const Friends = (props) => {
   return (
     <Container>
       <Header>
@@ -22,17 +22,17 @@ const Statistics = (props) => {
           </Button>
         </Left>
         <Body>
-          <Title>Statistics</Title>
+          <Title>Friends</Title>
         </Body>
         <Right>
-          <Icon name="md-stats" />
+          <Icon name="people" />
         </Right>
       </Header>
       <Content padder>
-        <Text>content</Text>
+        <Text>list</Text>
       </Content>
     </Container>
   );
 };
 
-export default Statistics;
+export default Friends;
