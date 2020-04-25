@@ -99,6 +99,8 @@ const LoginScreen = (props) => {
       if (result.type === "success") {
         console.log("LoginScreen.js.js 21 | ", result.user.givenName);
         GLOBAL.id = result.user.id;
+        GLOBAL.username = result.user.givenName;
+        GLOBAL.profilePic = result.user.photoUrl;
         console.log("Login"+ GLOBAL.id);
         props.navigation.navigate("Profile", {
           username: result.user.givenName,

@@ -108,8 +108,8 @@ const ProfileScreen = (props) => {
         )}
       </Header>
       <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
-        <Text>Welcome, {props.navigation.getParam("username")}</Text>
-        <Thumbnail large source={{ uri: photoURL }} />
+        <Text>Welcome, GLOBAL.username</Text>
+        <Thumbnail large source={{ uri: GLOBAL.profilePic }} />
         <Text style={styles.username}>Username</Text>
         <Text style={styles.goal}>Set your daily point goal!</Text>
         <Form style={styles.boi}>
