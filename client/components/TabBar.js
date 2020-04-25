@@ -2,10 +2,8 @@ import React from "react";
 import Feed from "../screens/Feed";
 import AddActivity from "../screens/AddActivity";
 import Statistics from "../screens/Statistics";
-import { Button, Text, Icon, Footer, FooterTab } from "native-base";
-import { TabNavigator } from "react-navigation";
+import { Button, Icon, Footer, FooterTab } from "native-base";
 import { createBottomTabNavigator } from "react-navigation-tabs";
-import { View } from "react-native";
 
 const TabBar = createBottomTabNavigator(
   {
@@ -14,35 +12,27 @@ const TabBar = createBottomTabNavigator(
     Statistics: { screen: Statistics },
   },
   {
-    initialRouteName: "Feed",
-    activeTintColor: "#F44336",
     tabBarComponent: (props) => {
       return (
         <Footer>
           <FooterTab>
             <Button
-              vertical
-              //active={props.navigationState.index === 0}
+              active={props.navigation.state.index === 0}
               onPress={() => props.navigation.navigate("Feed")}
             >
-              <Icon name="bowtie" />
-              <Text>hp</Text>
+              <Icon name="md-globe" />
             </Button>
             <Button
-              vertical
-              //active={props.navigationState.index === 1}
+              active={props.navigation.state.index === 1}
               onPress={() => props.navigation.navigate("AddActivity")}
             >
-              <Icon name="briefcase" />
-              <Text>a</Text>
+              <Icon name="md-clipboard" />
             </Button>
             <Button
-              vertical
-              //active={props.navigationState.index === 2}
+              active={props.navigation.state.index === 2}
               onPress={() => props.navigation.navigate("Statistics")}
             >
-              <Icon name="headset" />
-              <Text>s</Text>
+              <Icon name="md-stats" />
             </Button>
           </FooterTab>
         </Footer>
