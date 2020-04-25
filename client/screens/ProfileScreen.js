@@ -21,6 +21,7 @@ import CircleSlider from "../components/CircleSlider";
 import gradientBkgd from "../assets/mainBkgd.png";
 
 GLOBAL = require('../global');
+const axios = require('axios').default;
 
 var styles = {
   wrapper: {
@@ -60,7 +61,33 @@ var styles = {
 const ProfileScreen = (props) => {
   // don't use content because it is a ScrollView
   const photoURL = props.navigation.getParam("photo_link");
-  console.log("Profile" + GLOBAL.id);
+  console.log("Profile: " + GLOBAL.id);
+
+  const newUser = {
+    id: GLOBAL.id,
+    userName: props.navigation.getParam("username"),
+    profilePic: props.navigation.getParam("photo_link"),
+    points: 0,
+    goal: 100
+  };
+
+  console.log(newUser);
+
+  //Add to db here
+  axios.post('https://earthxhacks2020.wl.r.appspot.com/users', {
+      googleID: newUser.id,
+      userName: newUser.userName,
+      profilePic: newUser.profilePic,
+      points: newUser.points,
+      goal: newUser.goal
+  })
+  .then(function (response) {
+      console.log(response);
+  })
+  .catch(function (error) {
+      console.log(error);
+  });
+
   return (
     <View style={styles.wrapper}>
       <Header>
