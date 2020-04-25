@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-    username: {
+    userName: {
         type: String
     },
-    image: {
+    profilePic: {
         type: String
     },
     points: {

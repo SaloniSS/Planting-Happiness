@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-    _userId: {
+    user_id: {
         type: mongoose.Schema.Types.ObjectId
     },
     image: {
@@ -10,9 +10,12 @@ const PostSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    likes: {
+    likesCount: {
         type: Number,
         default: 0
+    },
+    category: {
+        type: String
     },
     date_added: {
         type: Date,

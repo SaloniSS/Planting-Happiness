@@ -20,7 +20,7 @@ exports.getUser = async (req, res, next) => {
 
 exports.addUser = async (req, res, next) => {
     try {
-        const { username, image, points, goal, activity_log } = req.body;
+        const { userName, profilePic, points, goal, activity_log } = req.body;
 
         const user = await User.create(req.body);
 
@@ -51,7 +51,7 @@ exports.addUser = async (req, res, next) => {
 exports.deleteUser = async (req, res, next) => {
     try {
 
-        const { name, image, points, goal, activity_log } = req.body;
+        const { userName, profilePic, points, goal, activity_log } = req.body;
 
         const user = await User.findById(req.params.id);
 
