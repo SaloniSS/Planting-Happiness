@@ -25,7 +25,7 @@ const MenuList = (props) => {
           bordered
           onPress={() => props.navigation.navigate("Profile")}
         >
-          <Icon name="md-stats" />
+          <Icon name="md-person" />
           <Text>Edit Profile</Text>
         </Button>
         <Button
@@ -43,7 +43,7 @@ const MenuList = (props) => {
           bordered
           onPress={() => props.navigation.navigate("Friends")}
         >
-          <Icon name="md-stats" />
+          <Icon name="people" />
           <Text>Friends</Text>
         </Button>
         <Button
@@ -52,7 +52,7 @@ const MenuList = (props) => {
           bordered
           onPress={() => props.navigation.navigate("Redeem")}
         >
-          <Icon name="md-stats" />
+          <Icon name="md-card" />
           <Text>Redeem Points</Text>
         </Button>
         <Button rounded onPress={() => props.navigation.navigate("Login")}>

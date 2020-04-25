@@ -1,16 +1,35 @@
 import React from "react";
-import { Container, Body, Content, Header, Title, Text } from "native-base";
+import {
+  Container,
+  Body,
+  Content,
+  Header,
+  Title,
+  Button,
+  Icon,
+  Right,
+  Text,
+  Left,
+} from "native-base";
 
-const Friends = () => {
+const Friends = (props) => {
   return (
     <Container>
       <Header>
+        <Left>
+          <Button transparent onPress={() => props.navigation.goBack()}>
+            <Icon name="arrow-round-back" />
+          </Button>
+        </Left>
         <Body>
           <Title>Friends</Title>
         </Body>
+        <Right>
+          <Icon name="people" />
+        </Right>
       </Header>
       <Content padder>
-        <Text>friends content</Text>
+        <Text>list</Text>
       </Content>
     </Container>
   );
