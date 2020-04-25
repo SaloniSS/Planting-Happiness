@@ -5,10 +5,12 @@ import {
   Body,
   Title,
   Button,
-  Content,
+  Row,
+  Grid,
   Form,
   Item,
   Input,
+  Col,
   Label,
   Text,
 } from "native-base";
@@ -16,6 +18,7 @@ import {
 import CircleSlider from "../components/CircleSlider";
 
 const ProfileScreen = (props) => {
+  // don't use content because it is a ScrollView
   return (
     <Container>
       <Header>
@@ -23,29 +26,27 @@ const ProfileScreen = (props) => {
           <Title>Set Up Account</Title>
         </Body>
       </Header>
-      <Content padder>
-        <Form>
-          <Item floatingLabel last>
-            <Label>Username</Label>
-            <Input />
-          </Item>
-          <Text>Set a daily point goal:</Text>
-          <Item>
-            <CircleSlider
-              startGradient="#01fffc"
-              endGradient="#a200ff"
-              value={100}
-              onValueChange={(value) => console.log(value)}
-            />
-          </Item>
-        </Form>
-        <Button
-          onPress={() => props.navigation.navigate("Feed")}
-          style={{ alignSelf: "flex-start" }}
-        >
-          <Text>Continue</Text>
-        </Button>
-      </Content>
+      <Form>
+        <Item floatingLabel last>
+          <Label>Username</Label>
+          <Input />
+        </Item>
+        <Text>Set a daily point goal:</Text>
+        <Item>
+          <CircleSlider
+            startGradient="#01fffc"
+            endGradient="#a200ff"
+            value={100}
+            onValueChange={(value) => console.log(value)}
+          />
+        </Item>
+      </Form>
+      <Button
+        onPress={() => props.navigation.navigate("Feed")}
+        style={{ alignSelf: "flex-start" }}
+      >
+        <Text>Continue</Text>
+      </Button>
     </Container>
   );
 };
