@@ -23,7 +23,7 @@ const ProfileScreen = (props) => {
     <Container>
       <Header>
         <Body>
-          <Title>Set Up Account</Title>
+          <Title>Edit Your Profile</Title>
         </Body>
       </Header>
       <Form>
@@ -47,6 +47,10 @@ const ProfileScreen = (props) => {
       >
         <Text>Continue</Text>
       </Button>
+      <Button
+        title="Sign out"
+        onPress={() => props.navigation.navigate("Login")}
+      />
     </Container>
   );
 };
