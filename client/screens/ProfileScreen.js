@@ -39,17 +39,17 @@ var styles = {
         fontSize: 20,
         fontWeight: "bold",
         paddingLeft: 5,
-        paddingTop: 8,
+        paddingTop: 5,
         paddingBottom: 30,
     },
     circleBoi: {
         paddingBottom: 25,
         paddingLeft: 30,
     },
-    logo: {
-        width: 200,
-        height: 200,
-        borderRadius: 100,
+    pfp: {
+        width: 80,
+        height: 80,
+        borderRadius: 80,
         alignItems: "center",
     },
 };
@@ -65,9 +65,10 @@ const ProfileScreen = (props) => {
                 </Body>
             </Header>
             <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
-                <Text>Welcome, {props.navigation.getParam("username")}</Text>
-                <Image style={styles.logo} source={{ uri: photoURL }} />
-                <Text style={styles.username}>Username</Text>
+                <Image style={styles.pfp} source={{ uri: photoURL }} />
+                <Text style={styles.username}>
+                    Welcome, {props.navigation.getParam("username")}
+                </Text>
                 <Text style={styles.goal}>Set your daily point goal!</Text>
                 <Form style={styles.boi}>
                     <Item style={styles.circleBoi}>
