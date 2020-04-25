@@ -87,6 +87,10 @@ var styles = {
       },
 };
 
+GLOBAL.id = '';
+GLOBAL.username = '';
+GLOBAL.profilePic = '';
+
 const LoginScreen = (props) => {
     const signInWithGoogle = async () => {
         try {
