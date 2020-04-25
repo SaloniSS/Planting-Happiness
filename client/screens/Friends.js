@@ -92,6 +92,22 @@ const Friends = (props) => {
               <Icon name="md-arrow-forward" />
             </Right>
           </ListItem>
+          <ListItem avatar noBorder>
+            <Left>
+              <Thumbnail
+                source={{
+                  uri:
+                    "https://style.anu.edu.au/_anu/4/images/placeholders/person.png",
+                }}
+              />
+            </Left>
+            <Body>
+              <Text>Prince Charming</Text>
+            </Body>
+            <Right>
+              <Icon name="md-arrow-forward" />
+            </Right>
+          </ListItem>
         </List>
       );
   };
