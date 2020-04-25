@@ -87,6 +87,10 @@ var styles = {
       },
 };
 
+GLOBAL.id = '';
+GLOBAL.username = '';
+GLOBAL.profilePic = '';
+
 const LoginScreen = (props) => {
     const signInWithGoogle = async () => {
         try {
@@ -99,6 +103,8 @@ const LoginScreen = (props) => {
       if (result.type === "success") {
         console.log("LoginScreen.js.js 21 | ", result.user.givenName);
         GLOBAL.id = result.user.id;
+        GLOBAL.username = result.user.givenName;
+        GLOBAL.profilePic = result.user.photoUrl;
         console.log("Login"+ GLOBAL.id);
         props.navigation.navigate("Profile", {
           username: result.user.givenName,
