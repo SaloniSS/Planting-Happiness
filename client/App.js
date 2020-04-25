@@ -1,11 +1,15 @@
-import * as React from "react";
+// Screens
+import LoginScreen from "./screens/LoginScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
-import HomePage from "./screens/HomePage";
-import AddActivity from "./screens/AddActivity";
-import TabBar from "./components/TabBar";
+//React Navigation Setup
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 
-function App() {
-  return <AddActivity />;
-}
+const MainNavigator = createSwitchNavigator({
+  Login: { screen: LoginScreen },
+  Profile: { screen: ProfileScreen },
+});
+
+const App = createAppContainer(MainNavigator);
 
 export default App;
