@@ -23,16 +23,17 @@ const ProfileScreen = (props) => {
           <Title>Set Up Account</Title>
         </Body>
       </Header>
-      <Content>
+      <Content padder>
         <Form>
           <Item floatingLabel last>
             <Label>Username</Label>
             <Input />
           </Item>
+          <Text>Set a daily point goal:</Text>
           <Item>
             <CircleSlider
-              //startGradient="#01fffc"
-              //endGradient="#a200ff"
+              startGradient="#01fffc"
+              endGradient="#a200ff"
               value={100}
               onValueChange={(value) => console.log(value)}
             />
@@ -43,12 +44,6 @@ const ProfileScreen = (props) => {
           style={{ alignSelf: "flex-start" }}
         >
           <Text>Continue</Text>
-        </Button>
-        <Button
-          onPress={() => props.navigation.navigate("Login")}
-          style={{ alignSelf: "flex-start" }}
-        >
-          <Text>Sign Out</Text>
         </Button>
       </Content>
     </Container>

@@ -32,7 +32,10 @@ const LoginScreen = (props) => {
 
   return (
     <Container>
-      <Content contentContainerStyle={{ justifyContent: "center", flex: 1 }}>
+      <Content
+        padder
+        contentContainerStyle={{ justifyContent: "center", flex: 1 }}
+      >
         <Button onPress={signInWithGoogle} style={{ alignSelf: "flex-start" }}>
           <Text>Login with Google</Text>
         </Button>
