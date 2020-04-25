@@ -29,7 +29,7 @@ const ViewActivity = (props) => {
             rounded
             onPress={() => props.navigation.navigate("AddActivity")}
           >
-            <Icon name="md-person" />
+            <Icon name="ios-leaf" />
             <Text>Add Activity</Text>
           </Button>
         </Content>
