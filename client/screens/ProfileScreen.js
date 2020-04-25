@@ -40,19 +40,21 @@ const ProfileScreen = (props) => {
             onValueChange={(value) => console.log(value)}
           />
         </Item>
+        <Item>
+          <Button
+            onPress={() => props.navigation.navigate("Feed")}
+            style={{ alignSelf: "flex-start" }}
+          >
+            <Text>Continue</Text>
+          </Button>
+          <Button
+            onPress={() => props.navigation.navigate("Login")}
+            style={{ alignSelf: "flex-start" }}
+          >
+            <Text>Sign Out</Text>
+          </Button>
+        </Item>
       </Form>
-      <Button
-        onPress={() => props.navigation.navigate("Feed")}
-        style={{ alignSelf: "flex-start" }}
-      >
-        <Text>Continue</Text>
-      </Button>
-      <Button
-        onPress={() => props.navigation.navigate("Login")}
-        style={{ alignSelf: "flex-start" }}
-      >
-        <Text>Sign Out</Text>
-      </Button>
     </Container>
   );
 };
