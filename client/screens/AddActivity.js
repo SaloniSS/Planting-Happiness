@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Body, Content, Header, Title, Text } from "native-base";
+import { LinearGradient } from "expo-linear-gradient";
 
 const AddActivity = (props) => {
   return (
@@ -9,9 +10,14 @@ const AddActivity = (props) => {
           <Title>Add Activity</Title>
         </Body>
       </Header>
-      <Content padder>
-        <Text>ok got dis far omg</Text>
-      </Content>
+      <LinearGradient
+        colors={["#B5EAD7", "#fff", "#fff", "#B5EAD7"]}
+        style={{ flex: 1 }}
+      >
+        <Content padder>
+          <Text>ok got dis far omg</Text>
+        </Content>
+      </LinearGradient>
     </Container>
   );
 };
