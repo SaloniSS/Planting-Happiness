@@ -17,19 +17,22 @@ var styles = {
   slide1: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    alignContent: 'center'
     //backgroundColor: '#b5ead7'
   },
   slide2: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    alignContent: 'center'
     //backgroundColor: '#bfd9e1'
   },
   slide3: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    alignContent: 'center'
     //backgroundColor: '#c7ceea'
   },
   heading: {
@@ -55,7 +58,6 @@ var styles = {
     height: 85  
   }
 }
-
 
 const LoginScreen = (props) => {
   const signInWithGoogle = async () => {
