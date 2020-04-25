@@ -36,7 +36,7 @@ const ProfileScreen = (props) => {
       <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
         <Header>
           <Body>
-            <Title>Set Up Account</Title>
+            <Title>Edit Your Profile</Title>
           </Body>
         </Header>
         <Form>
@@ -44,7 +44,7 @@ const ProfileScreen = (props) => {
             <Label>Username</Label>
             <Input />
           </Item>
-          <Text>Set a daily point goal:</Text>
+          <Label>Set a daily point goal:</Label>
           <Item>
             <CircleSlider
               startGradient="#B5EAD7"
@@ -53,15 +53,23 @@ const ProfileScreen = (props) => {
               onValueChange={(value) => console.log(value)}
             />
           </Item>
+          <Item>
+            <Button
+              onPress={() => props.navigation.navigate("Feed")}
+              style={{ alignSelf: "flex-start" }}
+            >
+              <Text>Continue</Text>
+            </Button>
+            <Button
+              onPress={() => props.navigation.navigate("Login")}
+              style={{ alignSelf: "flex-start" }}
+            >
+              <Text>Sign Out</Text>
+            </Button>
+          </Item>
         </Form>
-        <Button
-          onPress={() => props.navigation.navigate("Feed")}
-          style={{ alignSelf: "flex-start" }}
-        >
-          <Text>Continue</Text>
-        </Button>
-      </ImageBackground>
-    </Container>
+  </ImageBackground>   
+</Container>
   );
 };
 
