@@ -1,19 +1,7 @@
 import React from "react";
 import { Image, StyleSheet } from 'react-native';
 
-import {
-    Container,
-    Header,
-    Body,
-    Title,
-    Button,
-    Form,
-    Item,
-    Input,
-    Label,
-    Text,
-    View,
-} from "native-base";
+import { Container, Header, Body,Title,Button,Form,Item,Input,Label,Text,View,} from "native-base";
 import { ImageBackground } from "react-native";
 import CircleSlider from "../components/CircleSlider";
 
