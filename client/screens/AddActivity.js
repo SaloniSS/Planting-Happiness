@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Body,
@@ -9,6 +9,8 @@ import {
   Card,
   Icon,
   Right,
+  Textarea,
+  Item,
   Text,
   Segment,
   Form,
@@ -18,6 +20,13 @@ import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 const AddActivity = (props) => {
+  const [category, setCategory] = useState(0);
+  const [enteredText, setEnteredText] = useState("");
+
+  const textChangeHandler = (event) => {
+    setEnteredText(event.target.value);
+  };
+
   return (
     <Container>
       <Header>
@@ -39,7 +48,7 @@ const AddActivity = (props) => {
       >
         <Content padder>
           <Card>
-            <Form>
+            <Form style={{ padding: 20 }}>
               <Image
                 source={{
                   uri:
@@ -47,23 +56,39 @@ const AddActivity = (props) => {
                 }}
                 style={{ height: 200, width: null, flex: 1 }}
               />
+              <Text>Select a category:</Text>
               <Segment>
-                <Button first>
+                <Button
+                  active={category === 0}
+                  onPress={() => setCategory(0)}
+                  first
+                >
                   <Icon name="md-happy" />
                 </Button>
-                <Button>
+                <Button active={category === 1} onPress={() => setCategory(1)}>
                   <Icon name="md-contacts" />
                 </Button>
-                <Button>
+                <Button active={category === 2} onPress={() => setCategory(2)}>
                   <Icon name="md-bicycle" />
                 </Button>
-                <Button>
+                <Button active={category === 3} onPress={() => setCategory(3)}>
                   <Icon name="md-flower" />
                 </Button>
-                <Button last>
+                <Button
+                  active={category === 4}
+                  onPress={() => setCategory(4)}
+                  last
+                >
                   <Icon name="md-briefcase" />
                 </Button>
               </Segment>
+              <Textarea
+                rowSpan={4}
+                rounded
+                bordered
+                placeholder="Write a description here!"
+                onChange={textChangeHandler}
+              />
             </Form>
           </Card>
         </Content>
