@@ -27,6 +27,20 @@ const sampleData = [
       category: "md-happy",
     },
   },
+  {
+    user: {
+      profilePic:
+        "https://pbs.twimg.com/profile_images/1244659275248656385/um8V8hhy_400x400.jpg",
+      username: "btslover7878",
+    },
+    post: {
+      likeCount: 30,
+      description: "I love BTS!!!!",
+      date: "04/23/2020",
+      image: "https://data.whicdn.com/images/332694473/original.jpg",
+      category: "md-happy",
+    },
+  },
 ];
 
 const Feed = () => {
@@ -38,13 +52,9 @@ const Feed = () => {
         </Body>
       </Header>
       <Content>
-        <List>
-          {sampleData.map((post) => (
-            <ListItem key={post.post_id}>
-              <Post user={post.user} post={post.post} />
-            </ListItem>
-          ))}
-        </List>
+        {sampleData.map((post) => (
+          <Post user={post.user} post={post.post} />
+        ))}
       </Content>
     </Container>
   );
