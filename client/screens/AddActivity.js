@@ -2,8 +2,6 @@ import React from "react";
 import { Container, Body, Content, Header, Title, Text } from "native-base";
 
 const AddActivity = (props) => {
-  //const { navigate } = props.navigation;
-
   return (
     <Container>
       <Header>

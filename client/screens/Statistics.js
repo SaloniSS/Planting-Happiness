@@ -1,23 +1,19 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Container, Body, Content, Header, Title, Text } from "native-base";
 
 const Statistics = () => {
   return (
-    <View style={styles.background}>
-      <View>
-        <Text>Stats</Text>
-      </View>
-    </View>
+    <Container>
+      <Header>
+        <Body>
+          <Title>Statistics</Title>
+        </Body>
+      </Header>
+      <Content padder>
+        <Text>content</Text>
+      </Content>
+    </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#B5EAD7",
-  },
-});
 
 export default Statistics;
