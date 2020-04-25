@@ -2,10 +2,17 @@ import React from "react";
 import Feed from "../screens/Feed";
 import AddActivity from "../screens/AddActivity";
 import Statistics from "../screens/Statistics";
-import { TabNavigator } from "react-navigation";
 import { Button, Text, Icon, Footer, FooterTab } from "native-base";
+import { TabNavigator } from "react-navigation";
+import { createBottomTabNavigator } from "react-navigation-tabs";
 
-export default TabBar = TabNavigator(
+const MainNavigator = createBottomTabNavigator({
+  Feed: { screen: Feed },
+  AddActivity: { screen: AddActivity },
+  Statistics: { screen: Statistics },
+});
+
+/*const TabBar = TabNavigator(
   {
     Feed: { screen: Feed },
     AddActivity: { screen: AddActivity },
@@ -46,4 +53,6 @@ export default TabBar = TabNavigator(
       );
     },
   }
-);
+);*/
+
+export default MainNavigator;
