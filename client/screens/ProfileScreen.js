@@ -1,32 +1,46 @@
-import React, { Component } from "react";
-import { Text, View, StyleSheet, Button } from "react-native";
+import React from "react";
+import {
+  Container,
+  Header,
+  Body,
+  Title,
+  Button,
+  Content,
+  Form,
+  Item,
+  Input,
+  Label,
+  Text,
+} from "native-base";
 
-export default class ProfileScreen extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text> Profile Screen </Text>
-        <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-          Welcome, {this.props.navigation.getParam("username")}
-        </Text>
-        <Button
-          title="Go to feed"
-          onPress={() => this.props.navigation.navigate("Feed")}
-        />
-        <Button
-          title="Sign out"
-          onPress={() => this.props.navigation.navigate("Login")}
-        />
-      </View>
-    );
-  }
-}
+const ProfileScreen = (props) => {
+  return (
+    <Container>
+      <Header>
+        <Body>
+          <Title>Set Up Account</Title>
+        </Body>
+      </Header>
+      <Content>
+        <Form>
+          <Item floatingLabel>
+            <Label>Username</Label>
+            <Input />
+          </Item>
+          <Item floatingLabel last>
+            <Label>Password</Label>
+            <Input />
+          </Item>
+        </Form>
+        <Button onPress={() => props.navigation.navigate("Feed")}>
+          <Text>Continue</Text>
+        </Button>
+        <Button onPress={() => props.navigation.navigate("Login")}>
+          <Text>Sign Out</Text>
+        </Button>
+      </Content>
+    </Container>
+  );
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default ProfileScreen;
