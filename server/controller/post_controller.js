@@ -19,7 +19,7 @@ exports.getPost = async (req, res, next) => {
 
 exports.addPost = async (req, res, next) => {
     try {
-        const { _userId, image, description, likes } = req.body;
+        const { user_id, image, description, likesCount, category } = req.body;
 
         const post = await Post.create(req.body);
 
@@ -50,7 +50,7 @@ exports.addPost = async (req, res, next) => {
 exports.deletePost = async (req, res, next) => {
     try {
 
-        const { _userId, image, description, likes } = req.body;
+        const { _userId, image, description, likesCount, category } = req.body;
 
         const post = await Post.findById(req.params.id);
 

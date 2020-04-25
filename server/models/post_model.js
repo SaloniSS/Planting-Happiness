@@ -1,18 +1,25 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-    _userId: {
-        type: mongoose.Schema.Types.ObjectId
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: [true, 'No User']
     },
     image: {
-        type: String
+        type: String,
+        required: [true, 'Please add an image']
     },
     description: {
-        type: String
+        type: String,
+        required: [true, 'Please add a description']
     },
-    likes: {
+    likesCount: {
         type: Number,
         default: 0
+    },
+    category: {
+        type: String,
+        required: [true, 'Please choose a category']
     },
     date_added: {
         type: Date,

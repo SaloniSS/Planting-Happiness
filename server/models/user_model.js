@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-    username: {
-        type: String
+    userName: {
+        type: String,
+        required: [true, 'Please add a username']
     },
-    image: {
-        type: String
+    profilePic: {
+        type: String,
+        default: "Default Picture"
     },
     points: {
         type: Number,
