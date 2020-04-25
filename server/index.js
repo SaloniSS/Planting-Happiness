@@ -10,12 +10,12 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 const users = require('./routes/user_router');
+const posts = require('./routes/post_router');
 
 const app = express();
 
 app.use('/users', users);
-
-app.get('/', (req, res) => res.send('GET users'));
+app.use('/posts', posts);
 
 const PORT = process.env.PORT || 5000;
 
