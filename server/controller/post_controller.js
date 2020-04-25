@@ -76,6 +76,31 @@ exports.deletePost = async (req, res, next) => {
     }
 }
 
+exports.getPostByUser = async (req, res, next) => {
+    try {
+
+        const post = await Post.find({}).where({ "user_id": req.params.id});
+
+        if(!post){
+            return res.status(404).json({
+                success: false,
+                error: 'No post found'
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            data: post
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+}
+
 /* exports.updatePost = async (req, res, next) => {
     res.send('PATCH post');
 } */
