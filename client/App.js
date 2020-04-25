@@ -2,6 +2,7 @@
 import LoginScreen from "./screens/LoginScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import TabBar from "./components/TabBar";
+import { useFonts } from '@use-expo/font';
 
 //React Navigation Setup
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
