@@ -11,6 +11,7 @@ import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { StyleProvider } from "native-base";
 import getTheme from "./native-base-theme/components";
 import material from "./native-base-theme/variables/material";
+import commonColor from "./native-base-theme/variables/commonColor";
 
 //YellowBox.ignoreWarnings();
 console.disableYellowBox = true;
@@ -34,7 +35,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <StyleProvider style={getTheme(material)}>
+      <StyleProvider style={getTheme(commonColor)}>
         <AppContainer />
       </StyleProvider>
     );
