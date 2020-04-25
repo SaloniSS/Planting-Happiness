@@ -1,9 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Image } from "react-native";
 import {
-  Container,
-  Header,
-  Content,
   Card,
   CardItem,
   Thumbnail,

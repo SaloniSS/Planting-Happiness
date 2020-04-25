@@ -6,7 +6,7 @@ import { Container, Content, Button, Text } from "native-base";
 const IOS_CLIENT_ID = IOS_ID;
 const ANDROID_CLIENT_ID = ANDROID_ID;
 
-const LoginScreen = () => {
+const LoginScreen = (props) => {
   const signInWithGoogle = async () => {
     try {
       const result = await Google.logInAsync({
@@ -32,8 +32,11 @@ const LoginScreen = () => {
 
   return (
     <Container>
-      <Content contentContainerStyle={{ justifyContent: "center", flex: 1 }}>
-        <Button onPress={signInWithGoogle}>
+      <Content
+        padder
+        contentContainerStyle={{ justifyContent: "center", flex: 1 }}
+      >
+        <Button onPress={signInWithGoogle} style={{ alignSelf: "flex-start" }}>
           <Text>Login with Google</Text>
         </Button>
       </Content>

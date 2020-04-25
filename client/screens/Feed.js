@@ -51,7 +51,7 @@ const Feed = () => {
           <Title>Feed</Title>
         </Body>
       </Header>
-      <Content>
+      <Content padder>
         {sampleData.map((post) => (
           <Post user={post.user} post={post.post} />
         ))}
