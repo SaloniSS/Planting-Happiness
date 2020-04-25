@@ -78,5 +78,35 @@ exports.deleteUser = async (req, res, next) => {
 }
 
 exports.updateUser = async (req, res, next) => {
-    res.send('PATCH user');
+    try {
+
+        const { userName, profilePic, points, goal, activity_log } = req.body;
+
+        const user = await User.findById(req.params.id);
+
+        if(!user){
+            return res.status(404).json({
+                success: false,
+                error: 'No user found'
+            });
+        }
+
+        user.userName = req.body.userName;
+        user.profilePic = req.body.profilePic;
+        user.points = req.body.points;
+        user.goal = req.body.goal;
+        user.activity_log = req.body.activity_log;
+        user.save();
+
+        return res.status(200).json({
+            success: true,
+            data: user
+        });
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
 }

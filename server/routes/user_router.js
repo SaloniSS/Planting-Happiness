@@ -8,12 +8,9 @@ router
     .post(addUser);
 
 router
-    .route('/')
-    .patch(updateUser);
-
-router
     .route('/:id')
-    .delete(deleteUser);
+    .delete(deleteUser)
+    .patch(updateUser);
 
     
 module.exports = router;
