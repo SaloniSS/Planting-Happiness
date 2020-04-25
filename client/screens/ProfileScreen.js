@@ -5,40 +5,37 @@ import {
   Body,
   Title,
   Button,
-  Row,
-  Grid,
   Form,
   Item,
   Input,
-  Col,
   Label,
   Text,
 } from "native-base";
-import {ImageBackground} from "react-native";
+import { ImageBackground } from "react-native";
 import CircleSlider from "../components/CircleSlider";
 
-import gradientBkgd from '../assets/mainBkgd.png';
+import gradientBkgd from "../assets/mainBkgd.png";
 
 var styles = {
   bkgdImg: {
-    resizeMode: 'stretch',
-    justifyContent: 'center',
-    alignContent: 'space-around',
-    width: '100%',
-    height: '100%'
-  }
-}
+    resizeMode: "stretch",
+    justifyContent: "center",
+    alignContent: "space-around",
+    width: "100%",
+    height: "100%",
+  },
+};
 
 const ProfileScreen = (props) => {
   // don't use content because it is a ScrollView
   return (
     <Container>
+      <Header>
+        <Body>
+          <Title>Edit Your Profile</Title>
+        </Body>
+      </Header>
       <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
-        <Header>
-          <Body>
-            <Title>Edit Your Profile</Title>
-          </Body>
-        </Header>
         <Form>
           <Item floatingLabel last>
             <Label>Username</Label>
@@ -68,8 +65,8 @@ const ProfileScreen = (props) => {
             </Button>
           </Item>
         </Form>
-  </ImageBackground>   
-</Container>
+      </ImageBackground>
+    </Container>
   );
 };
 
