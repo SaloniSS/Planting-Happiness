@@ -68,20 +68,21 @@ const LoginScreen = (props) => {
                 scopes: ["profile", "email"],
             });
 
-            if (result.type === "success") {
-                console.log("LoginScreen.js.js 21 | ", result.user.givenName);
-                props.navigation.navigate("Profile", {
-                    username: result.user.givenName,
-                }); //after Google login redirect to Profile
-                return result.accessToken;
-            } else {
-                return { cancelled: true };
-            }
-        } catch (e) {
-            console.log("LoginScreen.js.js 30 | Error with login", e);
-            return { error: true };
-        }
-    };
+      if (result.type === "success") {
+        console.log("LoginScreen.js.js 21 | ", result.user.givenName);
+        props.navigation.navigate("Profile", {
+          username: result.user.givenName,
+          photo_link: result.user.photoUrl,
+        }); //after Google login redirect to Profile
+        return result.accessToken;
+      } else {
+        return { cancelled: true };
+      }
+    } catch (e) {
+      console.log("LoginScreen.js.js 30 | Error with login", e);
+      return { error: true };
+    }
+  };
 
     return (
         <Swiper style={styles.wrapper} showsButtons loop={false}>

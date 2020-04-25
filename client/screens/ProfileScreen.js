@@ -1,4 +1,6 @@
 import React from "react";
+import { Image, StyleSheet } from "react-native";
+
 import {
     Container,
     Header,
@@ -44,10 +46,17 @@ var styles = {
         paddingBottom: 25,
         paddingLeft: 30,
     },
+    logo: {
+        width: 200,
+        height: 200,
+        borderRadius: 100,
+        alignItems: "center",
+    },
 };
 
 const ProfileScreen = (props) => {
     // don't use content because it is a ScrollView
+    const photoURL = props.navigation.getParam("photo_link");
     return (
         <View style={styles.wrapper}>
             <Header>
@@ -56,6 +65,8 @@ const ProfileScreen = (props) => {
                 </Body>
             </Header>
             <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
+                <Text>Welcome, {props.navigation.getParam("username")}</Text>
+                <Image style={styles.logo} source={{ uri: photoURL }} />
                 <Text style={styles.username}>Username</Text>
                 <Text style={styles.goal}>Set your daily point goal!</Text>
                 <Form style={styles.boi}>
