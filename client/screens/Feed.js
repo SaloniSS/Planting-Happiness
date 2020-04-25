@@ -43,7 +43,10 @@ const Feed = () => {
           <Title>Feed</Title>
         </Body>
       </Header>
-      <LinearGradient colors={["#00e4d0", "#5983e8"]} style={{ flex: 1 }}>
+      <LinearGradient
+        colors={["#B5EAD7", "#fff", "#fff", "#B5EAD7"]}
+        style={{ flex: 1 }}
+      >
         <Content padder>
           {sampleData.map((post) => (
             <Post user={post.user} post={post.post} />
