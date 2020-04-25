@@ -72,6 +72,7 @@ const LoginScreen = (props) => {
         console.log("LoginScreen.js.js 21 | ", result.user.givenName);
         props.navigation.navigate("Profile", {
           username: result.user.givenName,
+          photo_link: result.user.photoUrl,
         }); //after Google login redirect to Profile
         return result.accessToken;
       } else {
