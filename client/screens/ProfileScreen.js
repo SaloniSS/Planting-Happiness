@@ -31,7 +31,7 @@ const ProfileScreen = (props) => {
           <Label>Username</Label>
           <Input />
         </Item>
-        <Text>Set a daily point goal:</Text>
+        <Label>Set a daily point goal:</Label>
         <Item>
           <CircleSlider
             startGradient="#B5EAD7"
@@ -48,9 +48,11 @@ const ProfileScreen = (props) => {
         <Text>Continue</Text>
       </Button>
       <Button
-        title="Sign out"
         onPress={() => props.navigation.navigate("Login")}
-      />
+        style={{ alignSelf: "flex-start" }}
+      >
+        <Text>Sign Out</Text>
+      </Button>
     </Container>
   );
 };
