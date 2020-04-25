@@ -1,4 +1,5 @@
 import React from 'react';
+import {YellowBox} from 'react-native';
 
 // Screens
 import LoginScreen from "./screens/LoginScreen";
@@ -9,6 +10,9 @@ import { Ionicons } from '@expo/vector-icons';
 
 //React Navigation Setup
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
+
+//YellowBox.ignoreWarnings();
+console.disableYellowBox = true;
 
 const MainNavigator = createSwitchNavigator({
   Login: { screen: LoginScreen },
