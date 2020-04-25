@@ -6,8 +6,8 @@ import { Container, Content, Button, Text } from "native-base";
 const IOS_CLIENT_ID = IOS_ID;
 const ANDROID_CLIENT_ID = ANDROID_ID;
 
-export default class LoginScreen extends Component {
-  signInWithGoogle = async () => {
+const LoginScreen = () => {
+  const signInWithGoogle = async () => {
     try {
       const result = await Google.logInAsync({
         iosClientId: IOS_CLIENT_ID,
@@ -17,7 +17,7 @@ export default class LoginScreen extends Component {
 
       if (result.type === "success") {
         console.log("LoginScreen.js.js 21 | ", result.user.givenName);
-        this.props.navigation.navigate("Profile", {
+        props.navigation.navigate("Profile", {
           username: result.user.givenName,
         }); //after Google login redirect to Profile
         return result.accessToken;
@@ -30,15 +30,15 @@ export default class LoginScreen extends Component {
     }
   };
 
-  render() {
-    return (
-      <Container>
-        <Content contentContainerStyle={{ justifyContent: "center", flex: 1 }}>
-          <Button onPress={this.signInWithGoogle}>
-            <Text>Login with Google</Text>
-          </Button>
-        </Content>
-      </Container>
-    );
-  }
-}
+  return (
+    <Container>
+      <Content contentContainerStyle={{ justifyContent: "center", flex: 1 }}>
+        <Button onPress={signInWithGoogle}>
+          <Text>Login with Google</Text>
+        </Button>
+      </Content>
+    </Container>
+  );
+};
+
+export default LoginScreen;
