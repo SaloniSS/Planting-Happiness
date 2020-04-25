@@ -34,8 +34,8 @@ const ProfileScreen = (props) => {
         <Text>Set a daily point goal:</Text>
         <Item>
           <CircleSlider
-            startGradient="#01fffc"
-            endGradient="#a200ff"
+            startGradient="#B5EAD7"
+            endGradient="#C7CEEA"
             value={100}
             onValueChange={(value) => console.log(value)}
           />
