@@ -14,7 +14,8 @@ const UserSchema = new mongoose.Schema({
         default: 0
     },
     goal: {
-        type: String
+        type: Number,
+        required: [true, 'Please add a goal']
     },
     friends: [
         mongoose.Schema.Types.ObjectId
