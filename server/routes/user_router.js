@@ -12,7 +12,7 @@ router
     .patch(updateUser);
 
 router
-    .route('/')
+    .route('/:id')
     .delete(deleteUser);
 
     

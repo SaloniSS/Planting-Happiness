@@ -1,12 +1,22 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({
-    _userId: Schema.Types.ObjectId,
+    _userId: {
+        type: mongoose.Schema.Types.ObjectId
+    },
     image: {
         type: String
     },
     description: {
         type: String
+    },
+    likes: {
+        type: Number,
+        default: 0
+    },
+    date_added: {
+        type: Date,
+        default: Date.now
     }
 });
 

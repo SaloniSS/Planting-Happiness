@@ -14,6 +14,8 @@ const posts = require('./routes/post_router');
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/users', users);
 app.use('/posts', posts);
 

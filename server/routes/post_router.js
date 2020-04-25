@@ -12,7 +12,7 @@ router
     .patch(updatePost);
  */
 router
-    .route('/')
+    .route('/:id')
     .delete(deletePost);
 
     
