@@ -7,6 +7,7 @@ import {
   Title,
   Button,
   Form,
+  Thumbnail,
   Item,
   Left,
   Right,
@@ -78,7 +79,7 @@ const ProfileScreen = (props) => {
       </Header>
       <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
         <Text>Welcome, {props.navigation.getParam("username")}</Text>
-        <Image style={styles.logo} source={{ uri: photoURL }} />
+        <Thumbnail large source={{ uri: photoURL }} />
         <Text style={styles.username}>Username</Text>
         <Text style={styles.goal}>Set your daily point goal!</Text>
         <Form style={styles.boi}>
