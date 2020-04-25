@@ -32,12 +32,6 @@ const TabBar = createBottomTabNavigator(
             </Button>
             <Button
               active={props.navigation.state.index === 2}
-              onPress={() => props.navigation.navigate("Statistics")}
-            >
-              <Icon name="md-stats" />
-            </Button>
-            <Button
-              active={props.navigation.state.index === 3}
               onPress={() => props.navigation.navigate("Menu")}
             >
               <Icon name="md-menu" />

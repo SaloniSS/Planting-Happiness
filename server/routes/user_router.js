@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getUser, addUser, deleteUser, updateUser} = require('../controller/user_controller');
+const { getUser, addUser, deleteUser, updateUser, getUserById} = require('../controller/user_controller');
 
 router
     .route('/')
@@ -10,6 +10,7 @@ router
 router
     .route('/:id')
     .delete(deleteUser)
+    .get(getUserById)
     .patch(updateUser);
 
     
