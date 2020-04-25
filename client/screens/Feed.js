@@ -1,23 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import HomePage from "./HomePage.js";
+import TabBar from "../components/TabBar";
+import { DrawerNavigator } from "react-navigation";
+import { Text } from "native-base";
 
-const Feed = () => {
-  return (
-    <View style={styles.background}>
-      <View>
-        <Text>Feed</Text>
-      </View>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#B5EAD7",
+const Feed = DrawerNavigator(
+  {
+    Home: { screen: HomePage },
+    Chat: { screen: TabBar },
   },
-});
-
+  {
+    contentComponent: (props) => <Text>hi</Text>,
+  }
+);
 export default Feed;
