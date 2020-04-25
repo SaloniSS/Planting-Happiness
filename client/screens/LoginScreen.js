@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as Google from "expo-google-app-auth";
 import { IOS_ID, ANDROID_ID } from "./ClientID";
 import { Container, Content, Button, Text, View } from "native-base";
-import { ImageBackground, Image, StyleSheet } from "react-native";
+import { ImageBackground, Image, StyleSheet , TouchableOpacity } from "react-native";
 import Swiper from "react-native-swiper";
 import LinearGradient from "react-native-linear-gradient";
 
@@ -57,6 +57,32 @@ var styles = {
         width: 70,
         height: 85,
     },
+    GoogleStyle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#4285F4',
+        borderWidth: 0.5,
+        borderColor: '#fff',
+        // height: 40,
+        //width: fit-content,
+        borderRadius: 5,
+        margin: 5,
+      },
+      ImageIconStyle: {
+        padding: 10,
+        margin: 5,
+        height: 25,
+        width: 25,
+        resizeMode: 'stretch',
+        backgroundColor: '#FFFFFF',
+      },
+      TextStyle: {
+        color: '#fff',
+        marginBottom: 4,
+        marginRight: 20,
+        alignItems: "center",
+        justifyContent: "center",
+      },
 };
 
 const LoginScreen = (props) => {
@@ -68,20 +94,21 @@ const LoginScreen = (props) => {
                 scopes: ["profile", "email"],
             });
 
-            if (result.type === "success") {
-                console.log("LoginScreen.js.js 21 | ", result.user.givenName);
-                props.navigation.navigate("Profile", {
-                    username: result.user.givenName,
-                }); //after Google login redirect to Profile
-                return result.accessToken;
-            } else {
-                return { cancelled: true };
-            }
-        } catch (e) {
-            console.log("LoginScreen.js.js 30 | Error with login", e);
-            return { error: true };
-        }
-    };
+      if (result.type === "success") {
+        console.log("LoginScreen.js.js 21 | ", result.user.givenName);
+        props.navigation.navigate("Profile", {
+          username: result.user.givenName,
+          photo_link: result.user.photoUrl,
+        }); //after Google login redirect to Profile
+        return result.accessToken;
+      } else {
+        return { cancelled: true };
+      }
+    } catch (e) {
+      console.log("LoginScreen.js.js 30 | Error with login", e);
+      return { error: true };
+    }
+  };
 
     return (
         <Swiper style={styles.wrapper} showsButtons loop={false}>
@@ -108,15 +135,13 @@ const LoginScreen = (props) => {
                     <Text style={styles.desc}>
                         Gain points to redeem for cool prizes!
                     </Text>
-                    <Button
-                        onPress={signInWithGoogle}
-                        style={{
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <Text>Sign in with Google</Text>
-                    </Button>
+                    <TouchableOpacity style={styles.GoogleStyle} activeOpacity={0.5} onPress={signInWithGoogle}>
+                        <Image
+                            source={{uri: "https://img.icons8.com/color/48/000000/google-logo.png"}}
+                            style={styles.ImageIconStyle}
+                        />
+                        <Text style={styles.TextStyle}>Sign in with Google</Text>
+                    </TouchableOpacity>
                 </ImageBackground>
             </View>
         </Swiper>

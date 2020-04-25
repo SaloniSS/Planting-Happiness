@@ -1,17 +1,7 @@
 import React from "react";
-import {
-    Container,
-    Header,
-    Body,
-    Title,
-    Button,
-    Form,
-    Item,
-    Input,
-    Label,
-    Text,
-    View,
-} from "native-base";
+import { Image, StyleSheet } from "react-native";
+
+import { Container, Header, Body,Title,Button,Form,Item,Input,Label,Text,View,} from "native-base";
 import { ImageBackground } from "react-native";
 import CircleSlider from "../components/CircleSlider";
 
@@ -25,11 +15,6 @@ var styles = {
         resizeMode: "stretch",
         width: "100%",
         height: "100%",
-    },
-    heading: {
-        color: "#fff",
-        fontSize: 28,
-        fontWeight: "bold",
     },
     username: {
         color: "#000000",
@@ -49,16 +34,27 @@ var styles = {
         paddingBottom: 25,
         paddingLeft: 30,
     },
+    logo: {
+        width: 200,
+        height: 200,
+        borderRadius: 100,
+        alignItems: "center",
+    },
 };
 
 const ProfileScreen = (props) => {
     // don't use content because it is a ScrollView
+    const photoURL = props.navigation.getParam("photo_link");
     return (
         <View style={styles.wrapper}>
             <Header>
-                <Title style={styles.heading}>Edit Your Profile</Title>
+                <Body>
+                    <Title>Edit Your Profile</Title>
+                </Body>
             </Header>
             <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
+                <Text>Welcome, {props.navigation.getParam("username")}</Text>
+                <Image style={styles.logo} source={{ uri: photoURL }} />
                 <Text style={styles.username}>Username</Text>
                 <Text style={styles.goal}>Set your daily point goal!</Text>
                 <Form style={styles.boi}>
@@ -87,44 +83,6 @@ const ProfileScreen = (props) => {
                 </Form>
             </ImageBackground>
         </View>
-        /*<Container style={styles.boi}>
-      <Header>
-        <Body>
-          <Title>Edit Your Profile</Title>
-        </Body>
-      </Header>
-      <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
-        <Form style={styles.boi}>
-          <Item floatingLabel last>
-            <Label style={styles.username}>Username</Label>
-            <Input/>
-          </Item>
-          <Label>Set a daily point goal:</Label>
-          <Item>
-            <CircleSlider
-              startGradient="#B5EAD7"
-              endGradient="#C7CEEA"
-              value={100}
-              onValueChange={(value) => console.log(value)}
-            />
-          </Item>
-          <Item>
-            <Button
-              onPress={() => props.navigation.navigate("Feed")}
-              style={{ alignSelf: "flex-start" }}
-            >
-              <Text>Continue</Text>
-            </Button>
-            <Button
-              onPress={() => props.navigation.navigate("Login")}
-              style={{ alignSelf: "flex-start" }}
-            >
-              <Text>Sign Out</Text>
-            </Button>
-          </Item>
-        </Form>
-      </ImageBackground>
-  </Container>*/
     );
 };
 
