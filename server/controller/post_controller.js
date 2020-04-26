@@ -1,4 +1,5 @@
 const Post = require('../models/post_model');
+const User = require('../models/user_model');
 
 exports.getPost = async (req, res, next) => {    
     try {
@@ -80,6 +81,7 @@ exports.getPostByUser = async (req, res, next) => {
     try {
 
         const post = await Post.find({}).where({ "user_id": req.params.id});
+        const user = await User.findById(req.params.id);
 
         if(!post){
             return res.status(404).json({
@@ -88,9 +90,17 @@ exports.getPostByUser = async (req, res, next) => {
             });
         }
 
+        if(!user){
+            return res.status(404).json({
+                success: false,
+                error: 'No user found'
+            });
+        }
+
         return res.status(200).json({
             success: true,
-            data: post
+            data: post,
+            user_data: user
         });
 
     } catch (error) {
@@ -106,6 +116,8 @@ exports.getPostByUserDay = async (req, res, next) => {
 
         const post = await Post.find({}).where({ "user_id": req.params.id, "date_added": {"$gte": req.params.dateStart + 'T00:00:00.000Z', "$lt":  req.params.dateStart + 'T23:59:59.999Z'}});
 
+        const user = await User.findById(req.params.id);
+
         if(!post){
             return res.status(404).json({
                 success: false,
@@ -113,9 +125,17 @@ exports.getPostByUserDay = async (req, res, next) => {
             });
         }
 
+        if(!user){
+            return res.status(404).json({
+                success: false,
+                error: 'No user found'
+            });
+        }
+
         return res.status(200).json({
             success: true,
-            data: post
+            data: post,
+            user_data: user
         });
 
     } catch (error) {
