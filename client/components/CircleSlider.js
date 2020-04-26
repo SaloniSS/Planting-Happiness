@@ -112,7 +112,7 @@ export default class CircleSlider extends Component {
             fill={this.props.textColor}
             textAnchor="middle"
           >
-            {this.props.showValue && this.state.angle}
+            {this.props.showValue && 360 - this.state.angle}
           </Text>
           <Path
             stroke={"url(#gradient1)"}
