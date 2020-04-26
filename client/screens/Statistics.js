@@ -49,15 +49,25 @@ const Statistics = (props) => {
         colors={["#B5EAD7", "#fff", "#fff", "#B5EAD7"]}
         style={{ flex: 1 }}
       >
-        <Text>Current Points: {user.points}</Text>
-        <Text>Percent of daily goal accomplished:</Text>
-        <CircleSlider
-          disabled
-          value={user.points}
-          //value={360 - (user.points / user.goal) * 360}
-          dialRadius={100}
-          dialWidth={20}
-        />
+        <Content padder>
+          <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+            Current Points: {user.points}
+          </Text>
+          <Text style={{ fontSize: 15, fontWeight: "bold", marginBottom: 20 }}>
+            Percent of daily goal accomplished:
+          </Text>
+          {user.points && (
+            <Body>
+              <CircleSlider
+                disabled
+                showValue={false}
+                value={360 - (user.points / user.goal) * 360}
+                dialRadius={100}
+                dialWidth={20}
+              />
+            </Body>
+          )}
+        </Content>
       </LinearGradient>
     </Container>
   );

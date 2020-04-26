@@ -163,7 +163,7 @@ CircleSlider.defaultProps = {
   showValue: true,
   startGradient: "#B5EAD7",
   endGradient: "#C7CEEA",
-  backgroundColor: "white",
+  backgroundColor: "#e6e5e3",
   startCoord: 0,
   onValueChange: (x) => x,
   disabled: false,
