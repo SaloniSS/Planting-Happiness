@@ -61,6 +61,7 @@ var styles = {
 const ProfileScreen = (props) => {
   // don't use content because it is a ScrollView
   const photoURL = props.navigation.getParam("photo_link");
+  GLOBAL.userId = "";
 
   const newUser = {
     googleID: GLOBAL.id,
@@ -88,7 +89,7 @@ const ProfileScreen = (props) => {
             goal: newUser.goal,
           })
           .then(function (response) {
-            console.log(response);
+            GLOBAL.userId = response.data.data._id;
           })
           .catch(function (error) {
             console.log(error);
