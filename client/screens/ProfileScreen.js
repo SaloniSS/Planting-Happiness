@@ -64,13 +64,14 @@ var styles = {
 const ProfileScreen = (props) => {
   const [goal, setGoal] = useState(0);
   // don't use content because it is a ScrollView
-  const photoURL = props.navigation.getParam("photo_link");
 
-  const updateGoal = (newGoal) => {
+  const updateGoal = () => {
+    const userDBLink = "https://earthxhacks2020.wl.r.appspot.com/users/" + GLOBAL.id;
+
     //patch request here
     axios
-    .patch("https://earthxhacks2020.wl.r.appspot.com/users", {
-      goal: newGoal,
+    .patch(userDBLink, {
+      goal: 360-goal,
     })
     .then(function (response) {
       console.log(response);
@@ -134,7 +135,7 @@ const ProfileScreen = (props) => {
           <Item style={styles.btn}>
             <Button
               //onPress={() => props.navigation.navigate("Feed")}
-              onPress={() => updateGoal(goal)}
+              onPress={() => updateGoal()}
               style={{ alignSelf: "flex-start" }}
             >
               <Text>Continue</Text>
