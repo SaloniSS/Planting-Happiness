@@ -88,13 +88,6 @@ exports.getPostByUser = async (req, res, next) => {
             });
         }
 
-        if(!user){
-            return res.status(404).json({
-                success: false,
-                error: 'No user found'
-            });
-        }
-
         return res.status(200).json({
             success: true,
             data: post
@@ -118,13 +111,6 @@ exports.getPostByUserDay = async (req, res, next) => {
             return res.status(404).json({
                 success: false,
                 error: 'No post found'
-            });
-        }
-
-        if(!user){
-            return res.status(404).json({
-                success: false,
-                error: 'No user found'
             });
         }
 
