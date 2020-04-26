@@ -61,33 +61,47 @@ var styles = {
 const ProfileScreen = (props) => {
   // don't use content because it is a ScrollView
   const photoURL = props.navigation.getParam("photo_link");
-  console.log("Profile: " + GLOBAL.id);
 
   const newUser = {
-    id: GLOBAL.id,
+    googleID: GLOBAL.id,
     userName: props.navigation.getParam("username"),
     profilePic: props.navigation.getParam("photo_link"),
     points: 0,
     goal: 100,
   };
 
-  console.log(newUser);
+  const userDBLink =
+    "https://earthxhacks2020.wl.r.appspot.com/users/" + newUser.googleID;
 
-  //Add to db here
   axios
-    .post("https://earthxhacks2020.wl.r.appspot.com/users", {
-      googleID: newUser.id,
-      userName: newUser.userName,
-      profilePic: newUser.profilePic,
-      points: newUser.points,
-      goal: newUser.goal,
-    })
+    .get(userDBLink)
     .then(function (response) {
-      console.log(response);
+      console.log(response.data.data.length);
+      if (response.data.data.length == 0) {
+        //Add to db here
+        axios
+          .post("https://earthxhacks2020.wl.r.appspot.com/users", {
+            googleID: newUser.googleID,
+            userName: newUser.userName,
+            profilePic: newUser.profilePic,
+            points: newUser.points,
+            goal: newUser.goal,
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        console.log("User Created");
+      } else {
+        console.log("User already exists");
+      }
     })
     .catch(function (error) {
       console.log(error);
-    });
+    })
+    .then(function () {});
 
   return (
     <View style={styles.wrapper}>
@@ -109,16 +123,19 @@ const ProfileScreen = (props) => {
         )}
       </Header>
       <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
-        <Text>Welcome, GLOBAL.username</Text>
-        <Thumbnail large source={{ uri: GLOBAL.profilePic }} />
-        <Text style={styles.username}>Username</Text>
+        <Item>
+          <Thumbnail large source={{ uri: GLOBAL.profilePic }} />
+          <Text style={styles.username}>Welcome, {GLOBAL.username}</Text>
+          {/*<Text style={styles.username}>Username</Text>*/}
+        </Item>
         <Text style={styles.goal}>Set your daily point goal!</Text>
         <Form style={styles.boi}>
           <Item style={styles.circleBoi}>
             <CircleSlider
-              value={360 - 100}
+              startGradient="#B5EAD7"
+              endGradient="#C7CEEA"
+              value={100}
               onValueChange={(value) => console.log(value)}
-              backgroundColor="#f7f8fa"
             />
           </Item>
           <Item>

@@ -47,6 +47,7 @@ const MenuList = (props) => {
             <Icon name="md-person" />
             <Text>Edit Profile</Text>
           </Button>
+          <Content padder />
           <Button
             iconLeft
             rounded
@@ -55,6 +56,7 @@ const MenuList = (props) => {
             <Icon name="md-stats" />
             <Text>Statistics</Text>
           </Button>
+          <Content padder />
           <Button
             iconLeft
             rounded
@@ -63,6 +65,7 @@ const MenuList = (props) => {
             <Icon name="people" />
             <Text>Friends</Text>
           </Button>
+          <Content padder />
           <Button
             iconLeft
             rounded
@@ -71,6 +74,7 @@ const MenuList = (props) => {
             <Icon name="md-card" />
             <Text>Redeem Points</Text>
           </Button>
+          <Content padder />
           <Button rounded onPress={() => props.navigation.navigate("Login")}>
             <Text>Log Out</Text>
           </Button>
