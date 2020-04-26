@@ -4,9 +4,10 @@ import {
   Body,
   Content,
   Header,
-  Card,
+  ListItem,
   Title,
   Text,
+  Card,
   Left,
   Right,
   Button,
@@ -24,18 +25,24 @@ const ViewActivity = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        `https://earthxhacks2020.wl.r.appspot.com/posts/${GLOBAL.id}`
+        `https://earthxhacks2020.wl.r.appspot.com/posts/5ea5b632bf3cb4001218a322`
       );
       setPosts(result.data.data);
-      console.log(_.groupBy(result.data.data, category));
     };
     fetchData();
   }, []);
 
+  const getCount = (category) => {
+    if (posts.length === 0) return 0;
+    const result = _.groupBy(posts, "category");
+    //console.log(result[category]);
+    return result[category].length;
+  };
+
   const renderToday = () => {
     if (posts.length == 0)
       return <Text>No activities logged. Get active!</Text>;
-    return <Text>ayee activities!</Text>;
+    return <Text>Nice job!</Text>;
   };
 
   return (
@@ -61,18 +68,20 @@ const ViewActivity = (props) => {
         <Content padder>
           <Text style={{ fontSize: 30, fontWeight: "bold" }}>Today</Text>
           {renderToday()}
-          <Card>
-            <Left>
-              <Icon name="md-happy" />
-            </Left>
-            <Body>
-              <Text>me time</Text>
-            </Body>
-            <Right>
-              <Button>
-                <Icon name="md-arrow-forward" />
-              </Button>
-            </Right>
+          <Card style={styles.card}>
+            <ListItem icon style={styles.listItem}>
+              <Left>
+                <Icon name="md-happy" />
+              </Left>
+              <Body>
+                <Text>{getCount("md-happy")} activities</Text>
+              </Body>
+              <Right>
+                <Button style={{ backgroundColor: "transparent" }}>
+                  <Icon name="md-arrow-forward" />
+                </Button>
+              </Right>
+            </ListItem>
           </Card>
         </Content>
       </LinearGradient>
@@ -81,3 +90,13 @@ const ViewActivity = (props) => {
 };
 
 export default ViewActivity;
+
+var styles = {
+  card: {
+    backgroundColor: "#adb7e0",
+  },
+  listItem: {
+    borderBottomWidth: 0,
+    height: 80,
+  },
+};
