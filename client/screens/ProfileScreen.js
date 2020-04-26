@@ -70,38 +70,38 @@ const ProfileScreen = (props) => {
         goal: 100,
     };
 
-    const userDBLink = 'https://earthxhacks2020.wl.r.appspot.com/users/' + newUser.googleID ;
+    const userDBLink =
+        "https://earthxhacks2020.wl.r.appspot.com/users/" + newUser.googleID;
 
-    axios.get(userDBLink)
-      .then(function (response) {
-        console.log(response.data.data.length);
-        if (response.data.data.length == 0){
-          //Add to db here
-          axios.post("https://earthxhacks2020.wl.r.appspot.com/users", {
-            googleID: newUser.googleID,
-            userName: newUser.userName,
-            profilePic: newUser.profilePic,
-            points: newUser.points,
-            goal: newUser.goal,
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
+    axios
+        .get(userDBLink)
+        .then(function (response) {
+            console.log(response.data.data.length);
+            if (response.data.data.length == 0) {
+                //Add to db here
+                axios
+                    .post("https://earthxhacks2020.wl.r.appspot.com/users", {
+                        googleID: newUser.googleID,
+                        userName: newUser.userName,
+                        profilePic: newUser.profilePic,
+                        points: newUser.points,
+                        goal: newUser.goal,
+                    })
+                    .then(function (response) {
+                        console.log(response);
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                console.log("User Created");
+            } else {
+                console.log("User already exists");
+            }
+        })
+        .catch(function (error) {
             console.log(error);
-          });
-          console.log("User Created");
-        }
-        else{
-          console.log("User already exists");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .then(function () {            
-      }
-    );
+        })
+        .then(function () {});
 
     return (
         <View style={styles.wrapper}>
@@ -126,9 +126,13 @@ const ProfileScreen = (props) => {
                 )}
             </Header>
             <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
-                <Text>Welcome, {GLOBAL.username}</Text>
-                <Thumbnail large source={{ uri: GLOBAL.profilePic }} />
-                <Text style={styles.username}>Username</Text>
+                <Item>
+                    <Thumbnail large source={{ uri: GLOBAL.profilePic }} />
+                    <Text style={styles.username}>
+                        Welcome, {GLOBAL.username}
+                    </Text>
+                    {/*<Text style={styles.username}>Username</Text>*/}
+                </Item>
                 <Text style={styles.goal}>Set your daily point goal!</Text>
                 <Form style={styles.boi}>
                     <Item style={styles.circleBoi}>

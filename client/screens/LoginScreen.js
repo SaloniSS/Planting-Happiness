@@ -18,42 +18,40 @@ import gradientBkgd from "../assets/homeBkgd.png";
 import leaf from "../assets/greenLeafBoi.png";
 import bottle from "../assets/waterBottle.png"; // bottleottle by khairizal from the Noun Project
 import ppl from "../assets/people.png"; // Community by designer expert from the Noun Project
+import prize from "../assets/prize.png"; // Present by Deemak Daksina from the Noun Project
 
 GLOBAL = require("../global");
 
 var styles = {
     wrapper: {},
-    slide1: {
+    slide: {
         flex: 1,
-        justifyContent: "center",
+        /*justifyContent: "center",
         alignItems: "center",
         alignContent: "center",
+        justifyContent: "center",*/
         //backgroundColor: '#b5ead7'
     },
-    slide2: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        alignContent: "center",
-        //backgroundColor: '#bfd9e1'
-    },
-    slide3: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        alignContent: "center",
-        //backgroundColor: '#c7ceea'
-    },
     heading: {
+        textAlign: "center",
         color: "#fff",
         fontSize: 30,
         fontWeight: "bold",
     },
-    desc: {
+    defaultDesc: {
+        textAlign: "center",
         color: "#fff",
         fontSize: 30,
         fontWeight: "bold",
-        padding: 15,
+        padding: 8,
+    },
+    lwrDesc: {
+        textAlign: "center",
+        color: "#fff",
+        fontSize: 30,
+        fontWeight: "bold",
+        padding: 10,
+        paddingBottom: 15,
     },
     bkgdImg: {
         resizeMode: "stretch",
@@ -74,12 +72,16 @@ var styles = {
         width: 202,
         height: 95,
     },
+    prizeImg: {
+        width: 143,
+        height: 100,
+    },
     GoogleStyle: {
         flexDirection: "row",
         alignItems: "center",
         backgroundColor: "#4285F4",
-        borderWidth: 0.5,
-        borderColor: "#fff",
+        borderWidth: 1,
+        borderColor: "#4285F4",
         // height: 40,
         //width: fit-content,
         borderRadius: 5,
@@ -137,29 +139,34 @@ const LoginScreen = (props) => {
 
     return (
         <Swiper style={styles.wrapper} showsButtons loop={false}>
-            <View testID="Hello" style={styles.slide1}>
+            <View testID="slide0" style={styles.slide}>
                 <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
                     <Image source={leaf} style={styles.leafImg}></Image>
                     <Text style={styles.heading}>Welcome to</Text>
                     <Text style={styles.heading}>Planting Happiness ♥</Text>
                 </ImageBackground>
             </View>
-            <View testID="Tagline" style={styles.slide2}>
+            <View testID="slide1" style={styles.slide}>
                 <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
                     <Image source={bottle} style={styles.bottleImg}></Image>
-                    <Text style={styles.desc}>
+                    <Text style={styles.defaultDesc}>
                         Set goals for exercise, eating healthy, productivity,
                         and so much more!
                     </Text>
                 </ImageBackground>
             </View>
-            <View testID="Info" style={styles.slide3}>
+            <View testID="slide2" style={styles.slide}>
                 <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
                     <Image source={ppl} style={styles.pplImg}></Image>
-                    <Text style={styles.desc}>
+                    <Text style={styles.defaultDesc}>
                         Connect with peers and share your activities!
                     </Text>
-                    <Text style={styles.desc}>
+                </ImageBackground>
+            </View>
+            <View testID="slide3" style={styles.slide}>
+                <ImageBackground source={gradientBkgd} style={styles.bkgdImg}>
+                    <Image source={prize} style={styles.prizeImg}></Image>
+                    <Text style={styles.lwrDesc}>
                         Gain points to redeem for cool prizes!
                     </Text>
                     <TouchableOpacity

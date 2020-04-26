@@ -24,7 +24,6 @@ const MenuList = (props) => {
                 style={{ flex: 1 }}
             >
                 <Content padder>
-                    <Content padder></Content>
                     <Button
                         iconLeft
                         rounded
