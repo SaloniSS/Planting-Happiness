@@ -97,7 +97,7 @@ exports.deleteUser = async (req, res, next) => {
 exports.updateUser = async (req, res, next) => {
     try {
 
-        const { googleID, userName, friends, profilePic, points, goal, activity_log } = req.body;
+        const { userName, friends, profilePic, points, goal, activity_log } = req.body;
 
         const user = await User.find({}).where({ "googleID": req.params.id});
 
@@ -108,13 +108,49 @@ exports.updateUser = async (req, res, next) => {
             });
         }
 
-        user.userName = req.body.userName;
-        user.friends = req.body.friends;
-        user.profilePic = req.body.profilePic;
-        user.points = req.body.points;
-        user.goal = req.body.goal;
-        user.activity_log = req.body.activity_log;
-        user.save();
+        if(req.body.userName != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    userName: req.body.userName
+                } 
+            });
+        }
+        if(req.body.friends != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    friends: req.body.friends
+                } 
+            });
+        }
+        if(req.body.profilePic != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    profilePic: req.body.profilePic
+                } 
+            });
+        }
+        if(req.body.points != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    points: req.body.points
+                } 
+            });
+        }
+        if(req.body.goal != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    goal: req.body.goal
+                } 
+            });
+        }
+        if(req.body.activity_log != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    activity_log: req.body.activity_log
+                } 
+            });
+        }
+
 
         return res.status(200).json({
             success: true,
