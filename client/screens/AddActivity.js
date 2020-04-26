@@ -21,6 +21,13 @@ import {
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
+const infoArray = [
+  "Share your me time! Can include gardening, meditation, reading, movie recommendations and much more!",
+  "Record your family/community experience! Can include board games, video calls, family projects, and much more!",
+  "Log your workout routine! Activities include yoga, jogging, dancing, or things that get your heart pumping!",
+  "Update your productivity! Activities include learning a new skill, finishing an assignment, or doing a chore!",
+];
+
 const AddActivity = (props) => {
   const [category, setCategory] = useState(0);
   const [enteredText, setEnteredText] = useState("");
@@ -94,22 +101,19 @@ const AddActivity = (props) => {
                   <Button
                     active={category === 3}
                     onPress={() => setCategory(3)}
-                  >
-                    <Icon name="md-flower" />
-                  </Button>
-                  <Button
-                    active={category === 4}
-                    onPress={() => setCategory(4)}
                     last
                   >
                     <Icon name="md-briefcase" />
                   </Button>
                 </Segment>
+                <Text style={{ color: "#c1c4c0", padding: 5 }}>
+                  {infoArray[category]}
+                </Text>
                 <Textarea
                   rowSpan={4}
                   rounded
                   bordered
-                  placeholder="Write a description here!"
+                  placeholder="Description"
                   onChange={textChangeHandler}
                 />
               </Form>
