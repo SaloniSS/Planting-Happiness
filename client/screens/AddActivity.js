@@ -39,7 +39,7 @@ const AddActivity = (props) => {
   const submitPost = () => {
     axios
       .post("https://earthxhacks2020.wl.r.appspot.com/posts", {
-        user_id: GLOBAL.userId,
+        user_id: GLOBAL.userID,
         image:
           "https://www.miraclegro.com/sites/g/files/oydgjc111/files/styles/scotts_asset_image_720_440/public/asset_images/main10TopTipsimage-x1080.jpg?itok=s8R6c7OO",
         description: enteredText,
