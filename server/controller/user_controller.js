@@ -108,17 +108,49 @@ exports.updateUser = async (req, res, next) => {
             });
         }
 
-         await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
-            $set: { 
-                userName: req.body.userName, 
-                friends: req.body.friends, 
-                profilePic: req.body.profilePic, 
-                points: req.body.points, 
-                goal: req.body.goal, 
-                activity_log: req.body.activity_log
-                
-            } 
-        });
+        if(req.body.userName != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    userName: req.body.userName
+                } 
+            });
+        }
+        if(req.body.friends != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    friends: req.body.friends
+                } 
+            });
+        }
+        if(req.body.profilePic != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    profilePic: req.body.profilePic
+                } 
+            });
+        }
+        if(req.body.points != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    points: req.body.points
+                } 
+            });
+        }
+        if(req.body.goal != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    goal: req.body.goal
+                } 
+            });
+        }
+        if(req.body.activity_log != null) {
+            await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+                $set: { 
+                    activity_log: req.body.activity_log
+                } 
+            });
+        }
+
 
         return res.status(200).json({
             success: true,
