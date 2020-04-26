@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import {
   Container,
   Body,
@@ -68,8 +68,7 @@ const Friends = (props) => {
             <Left>
               <Thumbnail
                 source={{
-                  uri:
-                    "https://pbs.twimg.com/media/EDKsyxIW4BAxteD.jpg",
+                  uri: "https://pbs.twimg.com/media/EDKsyxIW4BAxteD.jpg",
                 }}
               />
             </Left>
@@ -135,10 +134,10 @@ const Friends = (props) => {
           </ListItem>
         </List>
       );
-    if (view === 0){
-      return(
+    if (view === 0) {
+      return (
         <List>
-          { promiseInProgress === true ? (
+          {promiseInProgress === true ? (
             <Spinner style={{ height: 200 }} />
           ) : friends.length == 0 ? (
             <Text>You don't have any friends</Text>
@@ -148,10 +147,10 @@ const Friends = (props) => {
         </List>
       );
     }
-    if (view === 1){
-      return(
+    if (view === 1) {
+      return (
         <List>
-          { promiseInProgress === true ? (
+          {promiseInProgress === true ? (
             <Spinner style={{ height: 200 }} />
           ) : users.length == 0 ? (
             <Text>No one uses this app</Text>
@@ -160,7 +159,6 @@ const Friends = (props) => {
           )}
         </List>
       );
-
     }
   };
 
@@ -184,7 +182,7 @@ const Friends = (props) => {
         style={{ flex: 1 }}
       >
         <Segment style={{ backgroundColor: "transparent" }}>
-          <Button last active={view === 0} onPress={() => setView(0)}>
+          <Button first active={view === 0} onPress={() => setView(0)}>
             <Text>Following</Text>
           </Button>
           <Button last active={view === 1} onPress={() => setView(1)}>
