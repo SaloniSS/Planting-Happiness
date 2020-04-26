@@ -13,8 +13,6 @@ import {
 } from "native-base";
 
 const Post = (props) => {
-  console.log(props.post);
-
   return (
     <Card>
       <CardItem>

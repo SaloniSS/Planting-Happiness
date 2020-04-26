@@ -61,7 +61,8 @@ const Feed = () => {
         style={{ flex: 1 }}
       >
         <Content padder>
-          {posts.length != 0 && posts.map((post) => <Post post={post} />)}
+          {posts.length != 0 &&
+            posts.map((post) => <Post post={post} key={post._id} />)}
           {posts.length == 0 && (
             <Text>You don't follow anyone, get looking!</Text>
           )}
