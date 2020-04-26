@@ -14,7 +14,7 @@ import bottle from "../assets/waterBottle.png"; // bottleottle by khairizal from
 import ppl from "../assets/people.png"; // Community by designer expert from the Noun Project
 import prize from "../assets/prize.png"; // Present by Deemak Daksina from the Noun Project
 
-import { config } from "./ClientID";
+import { config } from "../ClientID";
 
 GLOBAL = require("../global");
 const axios = require("axios").default;

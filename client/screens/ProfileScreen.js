@@ -21,7 +21,7 @@ import CircleSlider from "../components/CircleSlider";
 
 import gradientBkgd from "../assets/mainBkgd.png";
 
-import { config } from "./ClientID";
+import { config } from "../ClientID";
 
 GLOBAL = require("../global");
 const axios = require("axios").default;
