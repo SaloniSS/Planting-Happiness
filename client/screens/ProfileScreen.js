@@ -64,13 +64,14 @@ var styles = {
 const ProfileScreen = (props) => {
   const [goal, setGoal] = useState(0);
   // don't use content because it is a ScrollView
-  const photoURL = props.navigation.getParam("photo_link");
 
-  const updateGoal = (newGoal) => {
+  const updateGoal = () => {
+    const userDBLink = "https://earthxhacks2020.wl.r.appspot.com/users/" + GLOBAL.id;
+
     //patch request here
     axios
-    .patch("https://earthxhacks2020.wl.r.appspot.com/users", {
-      goal: newGoal,
+    .patch(userDBLink, {
+      goal: 360-goal,
     })
     .then(function (response) {
       console.log(response);
@@ -80,11 +81,11 @@ const ProfileScreen = (props) => {
     });
 
     props.navigation.navigate("Feed");
-  }
+  };
 
   const signOutWithGoogle = async () => {
     accessToken = GLOBAL.accessToken;
-    
+
     await Google.logOutAsync({ accessToken, ...config });
     console.log("Signed out");
 
@@ -93,9 +94,9 @@ const ProfileScreen = (props) => {
     GLOBAL.profilePic = "";
     GLOBAL.userID = "";
 
-    props.navigation.navigate("Login")
+    props.navigation.navigate("Login");
   };
-  
+
   return (
     <View style={styles.wrapper}>
       <Header>
@@ -128,15 +129,13 @@ const ProfileScreen = (props) => {
               startGradient="#B5EAD7"
               endGradient="#C7CEEA"
               value={100}
-              //onValueChange={(value) => console.log(value)}
-              //onValueChange={(value) => setGoal(value)}
-              onValueChange={(value) => console.error(value)}
+              onValueChange={(value) => setGoal(value)}
             />
           </Item>
           <Item style={styles.btn}>
             <Button
               //onPress={() => props.navigation.navigate("Feed")}
-              onPress={() => updateGoal(goal)}
+              onPress={() => updateGoal()}
               style={{ alignSelf: "flex-start" }}
             >
               <Text>Continue</Text>
