@@ -25,7 +25,7 @@ const ViewActivity = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        `https://earthxhacks2020.wl.r.appspot.com/posts/5ea5b632bf3cb4001218a322`
+        `https://earthxhacks2020.wl.r.appspot.com/posts/${GLOBAL.userID}`
       );
       setPosts(result.data.data);
     };
