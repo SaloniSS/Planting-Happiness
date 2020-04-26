@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import * as Google from "expo-google-app-auth";
 import {
   Container,
   Body,
@@ -10,6 +11,9 @@ import {
   Text,
 } from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
+
+import { config } from "./ClientID";
+
 GLOBAL = require("../global");
 const axios = require("axios").default;
 
@@ -25,6 +29,20 @@ const MenuList = (props) => {
     };
     fetchData();
   }, []);
+
+  const signOutWithGoogle = async () => {
+    accessToken = GLOBAL.accessToken;
+    
+    await Google.logOutAsync({ accessToken, ...config });
+    console.log("Signed out");
+
+    GLOBAL.id = "";
+    GLOBAL.username = "";
+    GLOBAL.profilePic = "";
+    GLOBAL.userID = "";
+
+    props.navigation.navigate("Login")
+  };
 
   return (
     <Container>
@@ -78,7 +96,7 @@ const MenuList = (props) => {
             <Text>Redeem Points</Text>
           </Button>
           <Content padder />
-          <Button rounded onPress={() => props.navigation.navigate("Login")}>
+          <Button rounded onPress={() => signOutWithGoogle()}>
             <Text>Log Out</Text>
           </Button>
         </Content>
