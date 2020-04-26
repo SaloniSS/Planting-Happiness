@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import {
   Container,
   Body,
@@ -14,14 +14,38 @@ import {
   Text,
   Segment,
   Left,
+  Spinner,
 } from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
+import { trackPromise, usePromiseTracker } from "react-promise-tracker";
+const axios = require("axios").default;
+import User from "../components/User";
+import Friend from "../components/Friend";
 
 const Friends = (props) => {
   const [view, setView] = useState(0);
+  const [users, setUsers] = useState([]);
+  const [friends, setFriends] = useState([]);
+  const { promiseInProgress } = usePromiseTracker();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        `https://earthxhacks2020.wl.r.appspot.com/users`
+      );
+      setUsers(result.data.data);
+      const friends_result = await axios(
+        `https://earthxhacks2020.wl.r.appspot.com/users/${GLOBAL.id}`
+      );
+      console.log("Your Friends: ");
+      console.log(friends_result.data.data[0].friends);
+      setFriends(friends_result.data.data[0].friends);
+    };
+    trackPromise(fetchData());
+  }, []);
 
   const renderComponent = () => {
-    if (view === 0)
+    if (view === 2)
       return (
         <List>
           <ListItem avatar noBorder>
@@ -58,7 +82,7 @@ const Friends = (props) => {
           </ListItem>
         </List>
       );
-    else
+    if (view === 3)
       return (
         <List>
           <ListItem avatar noBorder>
@@ -111,6 +135,33 @@ const Friends = (props) => {
           </ListItem>
         </List>
       );
+    if (view === 0){
+      return(
+        <List>
+          { promiseInProgress === true ? (
+            <Spinner style={{ height: 200 }} />
+          ) : friends.length == 0 ? (
+            <Text>You don't have any friends</Text>
+          ) : (
+            friends.map((friend) => <Friend friend={friend} key={friend} />)
+          )}
+        </List>
+      );
+    }
+    if (view === 1){
+      return(
+        <List>
+          { promiseInProgress === true ? (
+            <Spinner style={{ height: 200 }} />
+          ) : users.length == 0 ? (
+            <Text>No one uses this app</Text>
+          ) : (
+            users.map((user) => <User user={user} key={user._id} />)
+          )}
+        </List>
+      );
+
+    }
   };
 
   return (
@@ -133,11 +184,11 @@ const Friends = (props) => {
         style={{ flex: 1 }}
       >
         <Segment style={{ backgroundColor: "transparent" }}>
-          <Button first active={view === 0} onPress={() => setView(0)}>
-            <Text>Followers</Text>
+          <Button last active={view === 0} onPress={() => setView(0)}>
+            <Text>Following</Text>
           </Button>
           <Button last active={view === 1} onPress={() => setView(1)}>
-            <Text>Following</Text>
+            <Text>Follow Users</Text>
           </Button>
         </Segment>
         <Content padder>{renderComponent()}</Content>
