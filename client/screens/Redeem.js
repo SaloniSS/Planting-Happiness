@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Body,
@@ -13,11 +13,61 @@ import {
   Thumbnail,
   Text,
   Left,
+  Toast,
+  Root
 } from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
+GLOBAL = require("../global");
+const axios = require("axios").default;
 
 const Redeem = (props) => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        `https://earthxhacks2020.wl.r.appspot.com/users/${GLOBAL.id}`
+      );
+      setUser(result.data.data[0]);
+    };
+    fetchData();
+  }, []);
+
+  const showPoints = (points) => {
+    Toast.show({
+      text: "You've redeemed " + points +" points and have " + (user.points - points) + " left!",
+      buttonText: "Okay",
+      position: "bottom",
+    });
+    setTimeout(() => {}, 2000);
+  };
+
+  const updatePoints = async (newPoints) => {
+    const userUrl = "https://earthxhacks2020.wl.r.appspot.com/users/" + GLOBAL.id ;
+    axios
+      .patch(userUrl, {
+        points: newPoints,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  const redeemPoints = (points) => {
+    console.log("Redeemed" + points);
+    console.log("User Points" + user.points);
+    console.log("New Points before db" + (user.points - points));
+    showPoints(points);
+    //patch points here
+    //updatePoints(user.points - points);
+    console.log("New Points after db" + user.points);
+  }
+
   return (
+    <Root>
     <Container>
       <Header>
         <Left>
@@ -55,7 +105,7 @@ const Redeem = (props) => {
                 </Text>
               </Body>
               <Right>
-                <Button transparent>
+                <Button transparent onPress={() => redeemPoints(5000)}>
                   <Text>5,000</Text>
                 </Button>
               </Right>
@@ -78,7 +128,7 @@ const Redeem = (props) => {
                 </Text>
               </Body>
               <Right>
-                <Button transparent>
+                <Button transparent onPress={() => redeemPoints(10000)}>
                   <Text>10,000</Text>
                 </Button>
               </Right>
@@ -101,7 +151,7 @@ const Redeem = (props) => {
                 </Text>
               </Body>
               <Right>
-                <Button transparent>
+                <Button transparent onPress={() => redeemPoints(20000)}>
                   <Text>20,000</Text>
                 </Button>
               </Right>
@@ -124,7 +174,7 @@ const Redeem = (props) => {
                 </Text>
               </Body>
               <Right>
-                <Button transparent>
+                <Button transparent onPress={() => redeemPoints(100000)}>
                   <Text>100,000</Text>
                 </Button>
               </Right>
@@ -133,6 +183,7 @@ const Redeem = (props) => {
         </Content>
       </LinearGradient>
     </Container>
+    </Root>
   );
 };
 

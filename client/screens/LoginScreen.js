@@ -98,11 +98,12 @@ var styles = {
   },
 };
 
-GLOBAL.id = "";
-GLOBAL.username = "";
-GLOBAL.profilePic = "";
-
 const LoginScreen = (props) => {
+  GLOBAL.id = "";
+  GLOBAL.username = "";
+  GLOBAL.profilePic = "";
+  GLOBAL.userID = "";
+  
   const signInWithGoogle = async () => {
     try {
       const result = await Google.logInAsync({
