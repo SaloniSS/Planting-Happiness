@@ -16,8 +16,8 @@ const ANDROID_CLIENT_ID = ANDROID_ID;
 
 import gradientBkgd from "../assets/homeBkgd.png";
 import leaf from "../assets/greenLeafBoi.png";
-import bottle from "../assets/waterBottle.png";
-import ppl from "../assets/people.png";
+import bottle from "../assets/waterBottle.png"; // bottleottle by khairizal from the Noun Project
+import ppl from "../assets/people.png"; // Community by designer expert from the Noun Project
 
 GLOBAL = require("../global");
 
