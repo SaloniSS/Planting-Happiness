@@ -1,6 +1,5 @@
 module.exports = {
-  id: "",
-  username: "",
-  profilePic: "",
-  userId: "",
+    id: '',
+    username: '',
+    profilePic: '',
 };
