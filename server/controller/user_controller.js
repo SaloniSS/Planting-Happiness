@@ -108,7 +108,6 @@ exports.updateUser = async (req, res, next) => {
             });
         }
 
-        user.googleID = req.body.googleID;
         user.userName = req.body.userName;
         user.friends = req.body.friends;
         user.profilePic = req.body.profilePic;
