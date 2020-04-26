@@ -176,6 +176,29 @@ const Redeem = (props) => {
                   square
                   source={{
                     uri:
+                      "https://www.accuquote.com/wp-content/uploads/2019/08/hands-in-hands-protecting-paper-family.jpg",
+                  }}
+                />
+              </Left>
+              <Body>
+                <Text>Insurance Discount</Text>
+                <Text note numberOfLines={1}>
+                  Get a 5% discount on life insurance.
+                </Text>
+              </Body>
+              <Right>
+                <Button transparent onPress={() => redeemPoints(500000)}>
+                  <Text>500,000</Text>
+                </Button>
+              </Right>
+            </ListItem>
+
+            <ListItem thumbnail>
+              <Left>
+                <Thumbnail
+                  square
+                  source={{
+                    uri:
                       "https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/1569858/910/607/m1/fpnw/wm0/1-.jpg?1471572641&s=55bf485b3d6d6ae028ad4a3954e62d1b",
                   }}
                 />
