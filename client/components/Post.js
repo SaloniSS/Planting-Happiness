@@ -17,9 +17,14 @@ const Post = (props) => {
     <Card>
       <CardItem>
         <Left>
-          <Thumbnail source={{ uri: props.user.profilePic }} />
+          <Thumbnail
+            source={{
+              uri:
+                "https://pbs.twimg.com/profile_images/1244659275248656385/um8V8hhy_400x400.jpg",
+            }}
+          />
           <Body>
-            <Text>{props.user.username}</Text>
+            <Text>{props.post.user_id}</Text>
           </Body>
         </Left>
         <Right>
@@ -34,11 +39,11 @@ const Post = (props) => {
       </CardItem>
       <CardItem>
         <Left>
-          <Text>{props.post.date}</Text>
+          <Text>{props.post.date_added}</Text>
         </Left>
         <Right>
           <Button transparent>
-            <Text>{props.post.likeCount}</Text>
+            <Text>{props.post.likesCount}</Text>
             <Icon name="md-thumbs-up" />
           </Button>
         </Right>

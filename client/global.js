@@ -3,4 +3,5 @@ module.exports = {
     username: '',
     profilePic: '',
     userID: '',
+    accessToken: '',
 };

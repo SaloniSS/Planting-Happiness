@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Image, StyleSheet } from "react-native";
+import * as Google from "expo-google-app-auth";
 
 import {
   Header,
@@ -19,6 +20,8 @@ import { ImageBackground } from "react-native";
 import CircleSlider from "../components/CircleSlider";
 
 import gradientBkgd from "../assets/mainBkgd.png";
+
+import { config } from "./ClientID";
 
 GLOBAL = require("../global");
 const axios = require("axios").default;
@@ -63,51 +66,35 @@ const ProfileScreen = (props) => {
   // don't use content because it is a ScrollView
   const photoURL = props.navigation.getParam("photo_link");
 
-  const newProfile = (goal) => {
-    const newUser = {
-      googleID: GLOBAL.id,
-      userName: props.navigation.getParam("username"),
-      profilePic: props.navigation.getParam("photo_link"),
-      points: 0,
-      goal: goal,
-    };
-  
-    const userDBLink =
-      "https://earthxhacks2020.wl.r.appspot.com/users/" + newUser.googleID;
-  
+  const updateGoal = (newGoal) => {
+    //patch request here
     axios
-      .get(userDBLink)
-      .then(function (response) {
-        console.log(response.data.data.length);
-        if (response.data.data.length == 0) {
-          //Add to db here
-          axios
-            .post("https://earthxhacks2020.wl.r.appspot.com/users", {
-              googleID: newUser.googleID,
-              userName: newUser.userName,
-              profilePic: newUser.profilePic,
-              points: newUser.points,
-              goal: newUser.goal,
-            })
-            .then(function (response) {
-              console.log(response);
-              GLOBAL.userID = response.data.data._id;
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
-          console.log("User Created");
-        } else {
-          console.log("User already exists");
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .then(function () {});
+    .patch("https://earthxhacks2020.wl.r.appspot.com/users", {
+      goal: newGoal,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
-      props.navigation.navigate("Feed")
+    props.navigation.navigate("Feed");
   }
+
+  const signOutWithGoogle = async () => {
+    accessToken = GLOBAL.accessToken;
+    
+    await Google.logOutAsync({ accessToken, ...config });
+    console.log("Signed out");
+
+    GLOBAL.id = "";
+    GLOBAL.username = "";
+    GLOBAL.profilePic = "";
+    GLOBAL.userID = "";
+
+    props.navigation.navigate("Login")
+  };
   
   return (
     <View style={styles.wrapper}>
@@ -149,14 +136,15 @@ const ProfileScreen = (props) => {
           <Item style={styles.btn}>
             <Button
               //onPress={() => props.navigation.navigate("Feed")}
-              onPress={() => newProfile(goal)}
+              onPress={() => updateGoal(goal)}
               style={{ alignSelf: "flex-start" }}
             >
               <Text>Continue</Text>
             </Button>
             <Button
-              onPress={() => props.navigation.navigate("Login")}
+              //onPress={() => props.navigation.navigate("Login")}
               style={{ alignSelf: "flex-start" }}
+              onPress={() => signOutWithGoogle()}
             >
               <Text>Sign Out</Text>
             </Button>
