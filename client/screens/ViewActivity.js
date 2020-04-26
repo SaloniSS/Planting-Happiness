@@ -69,12 +69,51 @@ const ViewActivity = (props) => {
           <Text style={{ fontSize: 30, fontWeight: "bold" }}>Today</Text>
           {renderToday()}
           <Card style={styles.card}>
-            <ListItem icon style={styles.listItem}>
+            <ListItem noBorder icon style={styles.listItem}>
               <Left>
-                <Icon name="md-happy" />
+                <Icon style={{ fontSize: 40, width: 40 }} name="md-happy" />
               </Left>
               <Body>
                 <Text>{getCount("md-happy")} activities</Text>
+              </Body>
+              <Right>
+                <Button style={{ backgroundColor: "transparent" }}>
+                  <Icon name="md-arrow-forward" />
+                </Button>
+              </Right>
+            </ListItem>
+            <ListItem noBorder icon style={styles.listItem}>
+              <Left>
+                <Icon style={{ fontSize: 40, width: 40 }} name="md-contacts" />
+              </Left>
+              <Body>
+                <Text>{getCount("md-contacts")} activities</Text>
+              </Body>
+              <Right>
+                <Button style={{ backgroundColor: "transparent" }}>
+                  <Icon name="md-arrow-forward" />
+                </Button>
+              </Right>
+            </ListItem>
+            <ListItem noBorder icon style={styles.listItem}>
+              <Left>
+                <Icon style={{ fontSize: 40, width: 40 }} name="md-bicycle" />
+              </Left>
+              <Body>
+                <Text>{getCount("md-bicycle")} activities</Text>
+              </Body>
+              <Right>
+                <Button style={{ backgroundColor: "transparent" }}>
+                  <Icon name="md-arrow-forward" />
+                </Button>
+              </Right>
+            </ListItem>
+            <ListItem noBorder icon style={styles.listItem}>
+              <Left>
+                <Icon style={{ fontSize: 40, width: 40 }} name="md-briefcase" />
+              </Left>
+              <Body>
+                <Text>{getCount("md-briefcase")} activities</Text>
               </Body>
               <Right>
                 <Button style={{ backgroundColor: "transparent" }}>
@@ -96,7 +135,6 @@ var styles = {
     backgroundColor: "#adb7e0",
   },
   listItem: {
-    borderBottomWidth: 0,
     height: 80,
   },
 };
