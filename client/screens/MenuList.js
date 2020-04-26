@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Body,
@@ -10,8 +10,22 @@ import {
   Text,
 } from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
+GLOBAL = require("../global");
+const axios = require("axios").default;
 
 const MenuList = (props) => {
+  const [points, setPoints] = useState(0);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        `https://earthxhacks2020.wl.r.appspot.com/users/${GLOBAL.id}`
+      );
+      setPoints(result.data.data[0].points);
+    };
+    fetchData();
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -24,6 +38,7 @@ const MenuList = (props) => {
         style={{ flex: 1 }}
       >
         <Content padder>
+          <Text>You have {points} points!</Text>
           <Button
             iconLeft
             rounded
