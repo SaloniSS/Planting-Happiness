@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Header, Content, Body, Title } from "native-base";
+import { Container, Header, Content, Body, Title, Text } from "native-base";
 import Post from "../components/Post";
 import { LinearGradient } from "expo-linear-gradient";
 const axios = require("axios").default;
@@ -61,9 +61,10 @@ const Feed = () => {
         style={{ flex: 1 }}
       >
         <Content padder>
-          {posts.map((post) => (
-            <Post post={post} />
-          ))}
+          {posts.length != 0 && posts.map((post) => <Post post={post} />)}
+          {posts.length == 0 && (
+            <Text>You don't follow anyone, get looking!</Text>
+          )}
         </Content>
       </LinearGradient>
     </Container>
