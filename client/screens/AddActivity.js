@@ -38,12 +38,17 @@ const AddActivity = (props) => {
 
   const submitPost = () => {
     axios
-      .post("https://earthxhacks2020.wl.r.appspot.com/posts", {
-        user_id: GLOBAL.userID,
-        image:
-          "https://www.miraclegro.com/sites/g/files/oydgjc111/files/styles/scotts_asset_image_720_440/public/asset_images/main10TopTipsimage-x1080.jpg?itok=s8R6c7OO",
-        description: enteredText,
-        category: categoryList[category],
+      .get(`https://earthxhacks2020.wl.r.appspot.com/users/${GLOBAL.id}`)
+      .then((response) => {
+        axios.post("https://earthxhacks2020.wl.r.appspot.com/posts", {
+          user_id: GLOBAL.userID,
+          image:
+            "https://www.miraclegro.com/sites/g/files/oydgjc111/files/styles/scotts_asset_image_720_440/public/asset_images/main10TopTipsimage-x1080.jpg?itok=s8R6c7OO",
+          description: enteredText,
+          category: categoryList[category],
+          profilePic: response.data.data[0].profilePic,
+          userName: response.data.data[0].userName,
+        });
       })
       .then(function (response) {
         Toast.show({
