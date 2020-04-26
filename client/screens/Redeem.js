@@ -33,6 +33,15 @@ const Redeem = (props) => {
     fetchData();
   }, []);
 
+  const insufficientPoints = (points) => {
+    Toast.show({
+      text: "Insufficient points! You have " + user.points + " points. You need " + (points - user.points) + " more points!",
+      buttonText: "Okay",
+      position: "bottom",
+    });
+    setTimeout(() => {}, 2000);
+  };
+
   const showPoints = (points) => {
     Toast.show({
       text: "You've redeemed " + points +" points and have " + (user.points - points) + " left!",
@@ -49,7 +58,7 @@ const Redeem = (props) => {
         points: newPoints,
       })
       .then(function (response) {
-        console.log(response);
+        //console.log(response);
       })
       .catch(function (error) {
         console.log(error);
@@ -60,9 +69,13 @@ const Redeem = (props) => {
     console.log("Redeemed" + points);
     console.log("User Points" + user.points);
     console.log("New Points before db" + (user.points - points));
-    showPoints(points);
-    //patch points here
-    //updatePoints(user.points - points);
+    if ((user.points - points) > 0){
+      showPoints(points);
+      updatePoints(user.points - points);
+    }
+    else{
+      insufficientPoints(points);
+    }
     console.log("New Points after db" + user.points);
   }
 
