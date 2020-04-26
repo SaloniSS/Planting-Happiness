@@ -1,5 +1,5 @@
 import React from "react";
-var moment = require('moment');
+var moment = require("moment");
 import { Image } from "react-native";
 import {
   Card,
@@ -39,7 +39,7 @@ const Post = (props) => {
       </CardItem>
       <CardItem>
         <Left>
-          <Text>{moment(props.post.date_added).format('lll')}</Text>
+          <Text>{moment(props.post.date_added).fromNow()}</Text>
         </Left>
         <Right>
           <Button transparent>
@@ -49,7 +49,9 @@ const Post = (props) => {
         </Right>
       </CardItem>
       <CardItem>
-        <Text>{props.post.description}</Text>
+        <Text style={{ marginBottom: 20, marginLeft: 10 }}>
+          {props.post.description}
+        </Text>
       </CardItem>
     </Card>
   );

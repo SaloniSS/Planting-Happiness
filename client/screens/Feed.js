@@ -45,7 +45,7 @@ const Feed = () => {
           ) : posts.length == 0 ? (
             <Text>You don't follow anyone, get looking!</Text>
           ) : (
-            posts.map((post) => <Post post={post} key={post._id} />)
+            posts.reverse().map((post) => <Post post={post} key={post._id} />)
           )}
         </Content>
       </LinearGradient>

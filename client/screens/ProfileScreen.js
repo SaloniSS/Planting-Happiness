@@ -66,19 +66,20 @@ const ProfileScreen = (props) => {
   // don't use content because it is a ScrollView
 
   const updateGoal = () => {
-    const userDBLink = "https://earthxhacks2020.wl.r.appspot.com/users/" + GLOBAL.id;
+    const userDBLink =
+      "https://earthxhacks2020.wl.r.appspot.com/users/" + GLOBAL.id;
 
     //patch request here
     axios
-    .patch(userDBLink, {
-      goal: 360-goal,
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+      .patch(userDBLink, {
+        goal: 360 - goal,
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
 
     props.navigation.navigate("Feed");
   };
@@ -126,8 +127,6 @@ const ProfileScreen = (props) => {
         <Form style={styles.boi}>
           <Item style={styles.circleBoi}>
             <CircleSlider
-              startGradient="#B5EAD7"
-              endGradient="#C7CEEA"
               value={100}
               onValueChange={(value) => setGoal(value)}
             />
