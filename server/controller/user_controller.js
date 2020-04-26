@@ -70,7 +70,7 @@ exports.deleteUser = async (req, res, next) => {
 
         const {  googleID, userName, profilePic, points, goal, activity_log } = req.body;
 
-        const user = await User.find({}).where({ "googleID": req.params.id});
+        const user = await User.findById(req.params.id);
 
         if(!user){
             return res.status(404).json({
