@@ -18,7 +18,7 @@ GLOBAL = require("../global");
 const axios = require("axios").default;
 
 const MenuList = (props) => {
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState(-1);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +32,7 @@ const MenuList = (props) => {
 
   const signOutWithGoogle = async () => {
     accessToken = GLOBAL.accessToken;
-    
+
     await Google.logOutAsync({ accessToken, ...config });
     console.log("Signed out");
 
@@ -41,7 +41,7 @@ const MenuList = (props) => {
     GLOBAL.profilePic = "";
     GLOBAL.userID = "";
 
-    props.navigation.navigate("Login")
+    props.navigation.navigate("Login");
   };
 
   return (
@@ -56,9 +56,11 @@ const MenuList = (props) => {
         style={{ flex: 1 }}
       >
         <Content padder>
-          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-            You have {points} points!
-          </Text>
+          {points != -1 && (
+            <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+              You have {points} points!
+            </Text>
+          )}
           <Content padder />
           <Button
             iconLeft

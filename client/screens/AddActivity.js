@@ -37,9 +37,11 @@ const AddActivity = (props) => {
   const [enteredText, setEnteredText] = useState("");
 
   const submitPost = () => {
+    let prevPoints;
     axios
       .get(`https://earthxhacks2020.wl.r.appspot.com/users/${GLOBAL.id}`)
       .then((response) => {
+        prevPoints = response.data.data[0].points;
         axios.post("https://earthxhacks2020.wl.r.appspot.com/posts", {
           user_id: GLOBAL.userID,
           image:
@@ -50,9 +52,17 @@ const AddActivity = (props) => {
           userName: response.data.data[0].userName,
         });
       })
+      .then(() =>
+        axios.patch(
+          `https://earthxhacks2020.wl.r.appspot.com/users/${GLOBAL.id}`,
+          {
+            points: prevPoints + 10,
+          }
+        )
+      )
       .then(function (response) {
         Toast.show({
-          text: "You've earned () points!",
+          text: "You've earned 10 points!",
           buttonText: "Okay",
           position: "bottom",
         });
