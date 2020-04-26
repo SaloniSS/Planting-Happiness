@@ -38,7 +38,10 @@ const MenuList = (props) => {
         style={{ flex: 1 }}
       >
         <Content padder>
-          <Text>You have {points} points!</Text>
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>
+            You have {points} points!
+          </Text>
+          <Content padder />
           <Button
             iconLeft
             rounded
