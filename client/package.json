@@ -21,6 +21,7 @@
     "expo-google-app-auth": "^8.1.0",
     "expo-linear-gradient": "~8.1.0",
     "lodash": "^4.17.15",
+    "moment": "^2.24.0",
     "native-base": "2.13.8",
     "react": "^16.9.0",
     "react-dom": "~16.9.0",
