@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image, StyleSheet } from "react-native";
 
 import {
@@ -59,50 +59,56 @@ var styles = {
 };
 
 const ProfileScreen = (props) => {
+  const [goal, setGoal] = useState(0);
   // don't use content because it is a ScrollView
   const photoURL = props.navigation.getParam("photo_link");
 
-  const newUser = {
-    googleID: GLOBAL.id,
-    userName: props.navigation.getParam("username"),
-    profilePic: props.navigation.getParam("photo_link"),
-    points: 0,
-    goal: 100,
-  };
+  const newProfile = (goal) => {
+    const newUser = {
+      googleID: GLOBAL.id,
+      userName: props.navigation.getParam("username"),
+      profilePic: props.navigation.getParam("photo_link"),
+      points: 0,
+      goal: goal,
+    };
+  
+    const userDBLink =
+      "https://earthxhacks2020.wl.r.appspot.com/users/" + newUser.googleID;
+  
+    axios
+      .get(userDBLink)
+      .then(function (response) {
+        console.log(response.data.data.length);
+        if (response.data.data.length == 0) {
+          //Add to db here
+          axios
+            .post("https://earthxhacks2020.wl.r.appspot.com/users", {
+              googleID: newUser.googleID,
+              userName: newUser.userName,
+              profilePic: newUser.profilePic,
+              points: newUser.points,
+              goal: newUser.goal,
+            })
+            .then(function (response) {
+              console.log(response);
+              GLOBAL.userID = response.data.data._id;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+          console.log("User Created");
+        } else {
+          console.log("User already exists");
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {});
 
-  const userDBLink =
-    "https://earthxhacks2020.wl.r.appspot.com/users/" + newUser.googleID;
-
-  axios
-    .get(userDBLink)
-    .then(function (response) {
-      console.log(response.data.data.length);
-      if (response.data.data.length == 0) {
-        //Add to db here
-        axios
-          .post("https://earthxhacks2020.wl.r.appspot.com/users", {
-            googleID: newUser.googleID,
-            userName: newUser.userName,
-            profilePic: newUser.profilePic,
-            points: newUser.points,
-            goal: newUser.goal,
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-        console.log("User Created");
-      } else {
-        console.log("User already exists");
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-    .then(function () {});
-
+      props.navigation.navigate("Feed")
+  }
+  
   return (
     <View style={styles.wrapper}>
       <Header>
@@ -135,12 +141,15 @@ const ProfileScreen = (props) => {
               startGradient="#B5EAD7"
               endGradient="#C7CEEA"
               value={100}
-              onValueChange={(value) => console.log(value)}
+              //onValueChange={(value) => console.log(value)}
+              //onValueChange={(value) => setGoal(value)}
+              onValueChange={(value) => console.error(value)}
             />
           </Item>
-          <Item>
+          <Item style={styles.btn}>
             <Button
-              onPress={() => props.navigation.navigate("Feed")}
+              //onPress={() => props.navigation.navigate("Feed")}
+              onPress={() => newProfile(goal)}
               style={{ alignSelf: "flex-start" }}
             >
               <Text>Continue</Text>

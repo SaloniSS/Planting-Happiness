@@ -49,6 +49,7 @@ const Statistics = (props) => {
         colors={["#B5EAD7", "#fff", "#fff", "#B5EAD7"]}
         style={{ flex: 1 }}
       >
+        <Text>Current Points: {user.points}</Text>
         <Text>Percent of daily goal accomplished:</Text>
         <CircleSlider
           disabled
