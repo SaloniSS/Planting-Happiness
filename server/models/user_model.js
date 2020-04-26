@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema({
         required: [true, 'Please add a goal']
     },
     friends: [
-        mongoose.Schema.Types.ObjectId
+        String
     ],
     activity_log: [
         mongoose.Schema.Types.ObjectId  
