@@ -66,8 +66,19 @@ const ProfileScreen = (props) => {
   // don't use content because it is a ScrollView
   const photoURL = props.navigation.getParam("photo_link");
 
-  const updateGoal = (goal) => {
+  const updateGoal = (newGoal) => {
     //patch request here
+    axios
+    .patch("https://earthxhacks2020.wl.r.appspot.com/users", {
+      goal: newGoal,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
     props.navigation.navigate("Feed");
   };
 

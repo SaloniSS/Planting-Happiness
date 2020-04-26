@@ -5,6 +5,14 @@ const PostSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: [true, 'No User']
     },
+    userName: {
+        type: String,
+        required: [true, 'Please add a userName']
+    },
+    profilePic: {
+        type: String,
+        required: [true, 'Please add a profile picture']
+    },
     image: {
         type: String,
         required: [true, 'Please add an image']
