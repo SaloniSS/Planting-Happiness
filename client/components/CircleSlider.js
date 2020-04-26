@@ -24,20 +24,30 @@ export default class CircleSlider extends Component {
   }
 
   componentWillMount() {
-    this._panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: (e, gs) => true,
-      onStartShouldSetPanResponderCapture: (e, gs) => true,
-      onMoveShouldSetPanResponder: (e, gs) => true,
-      onMoveShouldSetPanResponderCapture: (e, gs) => true,
-      onPanResponderMove: (e, gs) => {
-        let xOrigin =
-          this.state.xCenter - (this.props.dialRadius + this.props.btnRadius);
-        let yOrigin =
-          this.state.yCenter - (this.props.dialRadius + this.props.btnRadius);
-        let a = this.cartesianToPolar(gs.moveX - xOrigin, gs.moveY - yOrigin);
-        this.setState({ angle: a });
-      },
-    });
+    if (!this.props.disabled) {
+      this._panResponder = PanResponder.create({
+        onStartShouldSetPanResponder: (e, gs) => true,
+        onStartShouldSetPanResponderCapture: (e, gs) => true,
+        onMoveShouldSetPanResponder: (e, gs) => true,
+        onMoveShouldSetPanResponderCapture: (e, gs) => true,
+        onPanResponderMove: (e, gs) => {
+          let xOrigin =
+            this.state.xCenter - (this.props.dialRadius + this.props.btnRadius);
+          let yOrigin =
+            this.state.yCenter - (this.props.dialRadius + this.props.btnRadius);
+          let a = this.cartesianToPolar(gs.moveX - xOrigin, gs.moveY - yOrigin);
+          this.setState({ angle: a });
+        },
+      });
+    } else {
+      this._panResponder = PanResponder.create({
+        onStartShouldSetPanResponder: (e, gs) => true,
+        onStartShouldSetPanResponderCapture: (e, gs) => true,
+        onMoveShouldSetPanResponder: (e, gs) => true,
+        onMoveShouldSetPanResponderCapture: (e, gs) => true,
+        onPanResponderMove: (e, gs) => true,
+      });
+    }
   }
 
   polarToCartesian(angle) {
@@ -130,7 +140,7 @@ export default class CircleSlider extends Component {
               r={bR}
               cx={bR}
               cy={bR}
-              fill={"yellow"}
+              fill={"black"}
               {...this._panResponder.panHandlers}
             />
           </G>
@@ -150,9 +160,10 @@ CircleSlider.defaultProps = {
   xCenter: Dimensions.get("window").width / 2,
   yCenter: Dimensions.get("window").height / 2,
   showValue: true,
-  startGradient: "#12D8FA",
-  endGradient: "#A6FFCB",
+  startGradient: "#B5EAD7",
+  endGradient: "#C7CEEA",
   backgroundColor: "white",
   startCoord: 0,
   onValueChange: (x) => x,
+  disabled: false,
 };
