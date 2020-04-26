@@ -35,8 +35,8 @@ const ViewActivity = (props) => {
   const getCount = (category) => {
     if (posts.length === 0) return 0;
     const result = _.groupBy(posts, "category");
-    //console.log(result[category]);
-    return result[category].length;
+    if (result[category]) return result[category].length;
+    return 0;
   };
 
   const renderToday = () => {
