@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import {
   Container,
   Body,
@@ -20,6 +20,10 @@ import {
 } from "native-base";
 import { Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import * as ImagePicker from 'expo-image-picker';
+import Constants from 'expo-constants';
+import * as Permissions from 'expo-permissions';
+
 GLOBAL = require("../global");
 const axios = require("axios").default;
 
@@ -35,6 +39,11 @@ const categoryList = ["md-happy", "md-contacts", "md-bicycle", "md-briefcase"];
 const AddActivity = (props) => {
   const [category, setCategory] = useState(0);
   const [enteredText, setEnteredText] = useState("");
+  const [image, setImage] = useState("https://wp-rocket.me/wp-content/uploads/1/placeholder-feature-image.png");
+
+  useEffect(() => {
+    getPermissionAsync();
+  }, []);
 
   const submitPost = () => {
     let prevPoints;
@@ -44,8 +53,7 @@ const AddActivity = (props) => {
         prevPoints = response.data.data[0].points;
         axios.post("https://earthxhacks2020.wl.r.appspot.com/posts", {
           user_id: GLOBAL.userID,
-          image:
-            "https://www.miraclegro.com/sites/g/files/oydgjc111/files/styles/scotts_asset_image_720_440/public/asset_images/main10TopTipsimage-x1080.jpg?itok=s8R6c7OO",
+          image: image,
           description: enteredText,
           category: categoryList[category],
           profilePic: response.data.data[0].profilePic,
@@ -80,6 +88,32 @@ const AddActivity = (props) => {
       });
   };
 
+  getPermissionAsync = async () => {
+    if (Constants.platform.ios) {
+      const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+      if (status !== 'granted') {
+        alert('Sorry, we need camera roll permissions to make this work!');
+      }
+    }
+  };
+
+  _pickImage = async () => {
+    try {
+      let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+      if (!result.cancelled) {
+        setImage(result.uri);
+      }
+      console.log(result);
+    } catch (E) {
+      console.log(E);
+    }
+  };
+
   return (
     <Root>
       <Container>
@@ -103,10 +137,12 @@ const AddActivity = (props) => {
           <Content padder>
             <Card>
               <Form style={{ padding: 20 }}>
+              <Button  onPress={_pickImage}>
+                <Text>Add Image</Text>
+              </Button>
                 <Image
                   source={{
-                    uri:
-                      "https://wp-rocket.me/wp-content/uploads/1/placeholder-feature-image.png",
+                    uri: image,
                   }}
                   style={{ height: 200, width: null, flex: 1 }}
                 />
