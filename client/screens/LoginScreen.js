@@ -122,7 +122,7 @@ const LoginScreen = (props) => {
     axios
       .get(userDBLink)
       .then(function (response) {
-        console.log(response.data.data.length);
+        //console.log(response.data.data[0]._id);
         if (response.data.data.length == 0) {
           //Add to db here
           axios
@@ -143,6 +143,7 @@ const LoginScreen = (props) => {
           console.log("User Created");
         } else {
           console.log("User already exists");
+          GLOBAL.userID = response.data.data[0]._id;
         }
       })
       .catch(function (error) {
