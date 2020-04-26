@@ -37,6 +37,7 @@ export default class CircleSlider extends Component {
             this.state.yCenter - (this.props.dialRadius + this.props.btnRadius);
           let a = this.cartesianToPolar(gs.moveX - xOrigin, gs.moveY - yOrigin);
           this.setState({ angle: a });
+          this.props.onValueChange(a);
         },
       });
     } else {

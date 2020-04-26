@@ -69,11 +69,11 @@ const ProfileScreen = (props) => {
   const updateGoal = (goal) => {
     //patch request here
     props.navigation.navigate("Feed");
-  }
+  };
 
   const signOutWithGoogle = async () => {
     accessToken = GLOBAL.accessToken;
-    
+
     await Google.logOutAsync({ accessToken, ...config });
     console.log("Signed out");
 
@@ -82,9 +82,9 @@ const ProfileScreen = (props) => {
     GLOBAL.profilePic = "";
     GLOBAL.userID = "";
 
-    props.navigation.navigate("Login")
+    props.navigation.navigate("Login");
   };
-  
+
   return (
     <View style={styles.wrapper}>
       <Header>
@@ -117,9 +117,7 @@ const ProfileScreen = (props) => {
               startGradient="#B5EAD7"
               endGradient="#C7CEEA"
               value={100}
-              //onValueChange={(value) => console.log(value)}
-              //onValueChange={(value) => setGoal(value)}
-              onValueChange={(value) => console.error(value)}
+              onValueChange={(value) => setGoal(value)}
             />
           </Item>
           <Item style={styles.btn}>
