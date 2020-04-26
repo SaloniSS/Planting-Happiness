@@ -20,12 +20,11 @@ const Post = (props) => {
         <Left>
           <Thumbnail
             source={{
-              uri:
-                "https://pbs.twimg.com/profile_images/1244659275248656385/um8V8hhy_400x400.jpg",
+              uri: props.post.profilePic,
             }}
           />
           <Body>
-            <Text>{props.post.user_id}</Text>
+            <Text>{props.post.userName}</Text>
           </Body>
         </Left>
         <Right>

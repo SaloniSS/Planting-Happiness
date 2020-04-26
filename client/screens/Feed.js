@@ -1,43 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Container, Header, Content, Body, Title, Text } from "native-base";
-import Post from "../components/Post";
+import {
+  Container,
+  Header,
+  Content,
+  Body,
+  Title,
+  Text,
+  Spinner,
+} from "native-base";
 import { LinearGradient } from "expo-linear-gradient";
+import { trackPromise, usePromiseTracker } from "react-promise-tracker";
 const axios = require("axios").default;
 
-const sampleData = [
-  {
-    user: {
-      profilePic:
-        "https://i.pinimg.com/736x/bf/64/3a/bf643a1d81489917e05e664bfa579595.jpg",
-      username: "btslover7878",
-    },
-    post: {
-      likeCount: 3,
-      description: "I love BTS!!!!",
-      date: "04/23/2020",
-      image:
-        "https://www.kindpng.com/picc/m/123-1236277_jimin-bts-derp-face-png-download-bts-meme.png",
-      category: "md-happy",
-    },
-  },
-  {
-    user: {
-      profilePic:
-        "https://pbs.twimg.com/profile_images/1244659275248656385/um8V8hhy_400x400.jpg",
-      username: "btslover7878",
-    },
-    post: {
-      likeCount: 30,
-      description: "I love BTS!!!!",
-      date: "04/23/2020",
-      image: "https://data.whicdn.com/images/332694473/original.jpg",
-      category: "md-happy",
-    },
-  },
-];
+import Post from "../components/Post";
 
 const Feed = () => {
   const [posts, setPosts] = useState([]);
+  const { promiseInProgress } = usePromiseTracker();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,7 +25,7 @@ const Feed = () => {
       );
       setPosts(result.data.data);
     };
-    fetchData();
+    trackPromise(fetchData());
   }, []);
 
   return (
@@ -61,10 +40,12 @@ const Feed = () => {
         style={{ flex: 1 }}
       >
         <Content padder>
-          {posts.length != 0 &&
-            posts.map((post) => <Post post={post} key={post._id} />)}
-          {posts.length == 0 && (
+          {promiseInProgress === true ? (
+            <Spinner style={{ height: 200 }} />
+          ) : posts.length == 0 ? (
             <Text>You don't follow anyone, get looking!</Text>
+          ) : (
+            posts.map((post) => <Post post={post} key={post._id} />)
           )}
         </Content>
       </LinearGradient>
