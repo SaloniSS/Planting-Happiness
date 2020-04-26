@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Header, Content, Body, Title } from "native-base";
 import Post from "../components/Post";
 import { LinearGradient } from "expo-linear-gradient";
-
-GLOBAL = require('../global');
+const axios = require("axios").default;
 
 const sampleData = [
   {
@@ -38,7 +37,18 @@ const sampleData = [
 ];
 
 const Feed = () => {
-    console.log("Feed"+ GLOBAL.id);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        `https://earthxhacks2020.wl.r.appspot.com/posts`
+      );
+      setPosts(result.data.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <Container>
       <Header>
@@ -51,8 +61,8 @@ const Feed = () => {
         style={{ flex: 1 }}
       >
         <Content padder>
-          {sampleData.map((post) => (
-            <Post user={post.user} post={post.post} />
+          {posts.map((post) => (
+            <Post post={post} />
           ))}
         </Content>
       </LinearGradient>
