@@ -1,5 +1,4 @@
 const Post = require('../models/post_model');
-const User = require('../models/user_model');
 
 exports.getPost = async (req, res, next) => {    
     try {
@@ -20,7 +19,7 @@ exports.getPost = async (req, res, next) => {
 
 exports.addPost = async (req, res, next) => {
     try {
-        const { user_id, image, description, likesCount, category } = req.body;
+        const { userName, profilePic, user_id, image, description, likesCount, category } = req.body;
 
         const post = await Post.create(req.body);
 
@@ -51,7 +50,7 @@ exports.addPost = async (req, res, next) => {
 exports.deletePost = async (req, res, next) => {
     try {
 
-        const { _userId, image, description, likesCount, category } = req.body;
+        const { userName, profilePic, _userId, image, description, likesCount, category } = req.body;
 
         const post = await Post.findById(req.params.id);
 
@@ -81,7 +80,6 @@ exports.getPostByUser = async (req, res, next) => {
     try {
 
         const post = await Post.find({}).where({ "user_id": req.params.id});
-        const user = await User.findById(req.params.id);
 
         if(!post){
             return res.status(404).json({
@@ -99,8 +97,7 @@ exports.getPostByUser = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            data: post,
-            user_data: user
+            data: post
         });
 
     } catch (error) {
@@ -116,7 +113,6 @@ exports.getPostByUserDay = async (req, res, next) => {
 
         const post = await Post.find({}).where({ "user_id": req.params.id, "date_added": {"$gte": req.params.dateStart + 'T00:00:00.000Z', "$lt":  req.params.dateStart + 'T23:59:59.999Z'}});
 
-        const user = await User.findById(req.params.id);
 
         if(!post){
             return res.status(404).json({
@@ -134,8 +130,7 @@ exports.getPostByUserDay = async (req, res, next) => {
 
         return res.status(200).json({
             success: true,
-            data: post,
-            user_data: user
+            data: post
         });
 
     } catch (error) {
