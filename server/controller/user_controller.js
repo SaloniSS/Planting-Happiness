@@ -97,7 +97,7 @@ exports.deleteUser = async (req, res, next) => {
 exports.updateUser = async (req, res, next) => {
     try {
 
-        const { googleID, userName, friends, profilePic, points, goal, activity_log } = req.body;
+        const { userName, friends, profilePic, points, goal, activity_log } = req.body;
 
         const user = await User.find({}).where({ "googleID": req.params.id});
 
@@ -108,13 +108,17 @@ exports.updateUser = async (req, res, next) => {
             });
         }
 
-        user.userName = req.body.userName;
-        user.friends = req.body.friends;
-        user.profilePic = req.body.profilePic;
-        user.points = req.body.points;
-        user.goal = req.body.goal;
-        user.activity_log = req.body.activity_log;
-        user.save();
+         await User.find({}).where({ "googleID": req.params.id}).replaceOne({}, { 
+            $set: { 
+                userName: req.body.userName, 
+                friends: req.body.friends, 
+                profilePic: req.body.profilePic, 
+                points: req.body.points, 
+                goal: req.body.goal, 
+                activity_log: req.body.activity_log
+                
+            } 
+        });
 
         return res.status(200).json({
             success: true,
