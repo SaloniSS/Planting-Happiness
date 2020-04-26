@@ -21,7 +21,7 @@ exports.getUser = async (req, res, next) => {
 exports.getUserById = async (req, res, next) => {
     
     try {
-        const user = await User.find({}).where({ "_id": req.params.id});
+        const user = await User.find({}).where({ "googleID": req.params.id});
 
         return res.status(200).json({
             success: true,
