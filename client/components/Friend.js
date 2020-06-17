@@ -25,7 +25,7 @@ const User = (props) => {
     useEffect(() => {
         const fetchData = async () => {
           const result = await axios(
-            `https://earthxhacks2020.wl.r.appspot.com/users/${props.friend}`
+            `https://hdt-node-servers.herokuapp.com/PlantingHappiness/users/${props.friend}`
           );
           setUser(result.data.data[0]);
         };

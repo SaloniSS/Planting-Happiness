@@ -117,7 +117,7 @@ const LoginScreen = (props) => {
     };
   
     const userDBLink =
-      "https://earthxhacks2020.wl.r.appspot.com/users/" + newUser.googleID;
+      "https://hdt-node-servers.herokuapp.com/PlantingHappiness/users/" + newUser.googleID;
   
     axios
       .get(userDBLink)
@@ -126,7 +126,7 @@ const LoginScreen = (props) => {
         if (response.data.data.length == 0) {
           //Add to db here
           axios
-            .post("https://earthxhacks2020.wl.r.appspot.com/users", {
+            .post("https://hdt-node-servers.herokuapp.com/PlantingHappiness/users", {
               googleID: newUser.googleID,
               userName: newUser.userName,
               profilePic: newUser.profilePic,

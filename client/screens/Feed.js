@@ -21,7 +21,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        `https://earthxhacks2020.wl.r.appspot.com/posts`
+        `https://hdt-node-servers.herokuapp.com/PlantingHappiness/posts`
       );
       setPosts(result.data.data);
     };

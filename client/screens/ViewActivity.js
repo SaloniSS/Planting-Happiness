@@ -25,7 +25,7 @@ const ViewActivity = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        `https://earthxhacks2020.wl.r.appspot.com/posts/${GLOBAL.userID}`
+        `https://hdt-node-servers.herokuapp.com/PlantingHappiness/posts/${GLOBAL.userID}`
       );
       setPosts(result.data.data);
     };

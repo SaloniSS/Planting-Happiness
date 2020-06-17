@@ -67,7 +67,7 @@ const ProfileScreen = (props) => {
 
   const updateGoal = () => {
     const userDBLink =
-      "https://earthxhacks2020.wl.r.appspot.com/users/" + GLOBAL.id;
+      "https://hdt-node-servers.herokuapp.com/PlantingHappiness/users/" + GLOBAL.id;
 
     //patch request here
     axios

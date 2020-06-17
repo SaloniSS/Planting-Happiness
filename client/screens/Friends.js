@@ -31,11 +31,11 @@ const Friends = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        `https://earthxhacks2020.wl.r.appspot.com/users`
+        `https://hdt-node-servers.herokuapp.com/PlantingHappiness/users`
       );
       setUsers(result.data.data);
       const friends_result = await axios(
-        `https://earthxhacks2020.wl.r.appspot.com/users/${GLOBAL.id}`
+        `https://hdt-node-servers.herokuapp.com/PlantingHappiness/users/${GLOBAL.id}`
       );
       console.log("Your Friends: ");
       console.log(friends_result.data.data[0].friends);

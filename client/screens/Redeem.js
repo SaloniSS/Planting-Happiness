@@ -27,7 +27,7 @@ const Redeem = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        `https://earthxhacks2020.wl.r.appspot.com/users/${GLOBAL.id}`
+        `https://hdt-node-servers.herokuapp.com/PlantingHappiness/users/${GLOBAL.id}`
       );
       setUser(result.data.data[0]);
     };
@@ -64,7 +64,7 @@ const Redeem = (props) => {
 
   const updatePoints = async (newPoints) => {
     const userUrl =
-      "https://earthxhacks2020.wl.r.appspot.com/users/" + GLOBAL.id;
+      "https://hdt-node-servers.herokuapp.com/PlantingHappiness/users/" + GLOBAL.id;
     axios
       .patch(userUrl, {
         points: newPoints,
