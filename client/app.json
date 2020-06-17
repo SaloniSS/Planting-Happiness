@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "client",
-    "slug": "client",
+    "name": "Planting Happiness",
+    "slug": "PlantingHappiness",
     "platforms": [
       "ios",
       "android",
@@ -22,7 +22,46 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.plantinghappiness.app",
+      "buildNumber": "1.0.0",
+      "backgroundColor": "#abc2a5",
+      "icon": "./assets/icon.png",
+      "supportsTablet": true,
+      "usesIcloudStorage": true,
+      "splash": {
+        "image": "./assets/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "849038589311-i4tfflbglee2fji3104ck6i3co7upoh6.apps.googleusercontent.com"
+        }
+      }
+    },
+    "android": {
+      "package": "com.plantinghappiness.app",
+      "versionCode": 1,
+      "backgroundColor": "#abc2a5",
+      "icon": "./assets/android_icon.png",
+  
+      "permissions": [
+        "CAMERA",
+        "MANAGE_DOCUMENTS",
+        "READ_EXTERNAL_STORAGE",
+        "READ_PHONE_STATE"
+      ],
+      "splash": {
+        "image": "./assets/splash.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleSignIn": {
+          "apiKey": "849038589311-2jrkkb29tb1458f357bit9p5j0pb8g3b.apps.googleusercontent.com",
+          "certificateHash": "29:85:E8:50:23:2F:2E:65:36:67:D9:F1:59:5E:7A:5D:00:57:62:9D"
+        }
+      }
     }
   }
 }
