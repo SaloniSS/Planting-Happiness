@@ -1,6 +1,19 @@
 # Planting Happiness
 Planting Happiness: Stay connected, productive and motivated while giving back to the community!
 
+## Created By
+
+- [Megan Tran](https://github.com/meganjtran)
+- [Reshmi Ranjith](https://github.com/ReshmiCode)
+- [Saloni Shivdasani](https://github.com/SaloniSS)
+- [Vincent Vu](https://github.com/vincent-vu280)
+
+## Links
+
+[Store Listing](https://play.google.com/store/apps/details?id=com.plantinghappiness.app)   
+[Demo Video](https://www.youtube.com/watch?v=gtERz-YO9ps)  
+[Devpost Submission](https://devpost.com/software/planting-happiness)  
+
 ## Submission
 Submitted for EarthXHacks 2020
 
