@@ -40,6 +40,3 @@ We learned how to build a mobile application in React Native. We also learned ho
 
 ## What's next for Planting Happiness
 We plan on changing the activities view to list specific tasks you can do instead of having general categories. This will make it easier for users to see what activities can earn what amount of points. We also want to add a global leaderboard or even one against friends so you can see how many points they have.
-
-## Demo
-https://youtu.be/gtERz-YO9ps
